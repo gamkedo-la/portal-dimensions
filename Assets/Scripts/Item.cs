@@ -11,7 +11,8 @@ public class Item : MonoBehaviour
 
     private void OnEnable()
     {
-        GetComponent<MeshRenderer>().material.color = itemType.itemColor;
+        if(GetComponent<MeshRenderer>() != null)
+            GetComponent<MeshRenderer>().material.color = itemType.itemColor;
     }
 
     private void OnTriggerEnter(Collider other)
