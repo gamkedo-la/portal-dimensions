@@ -186,6 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: {fileID: 11400000, guid: 20c4c1e493f860f43bfc03acf6190622, type: 2}
+  pickUpSound: {fileID: 11400000, guid: 4ac5ac733d2b20e409f55a4359fc328e, type: 2}
   collection: {fileID: 11400000, guid: c28c62ca3fa1bb44cad2673fa59f5f17, type: 2}
 --- !u!135 &8982001
 SphereCollider:
@@ -487,6 +488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: {fileID: 11400000, guid: 65cdd83c9ad3e1b49a7958c40d6c29c6, type: 2}
+  pickUpSound: {fileID: 11400000, guid: 4ac5ac733d2b20e409f55a4359fc328e, type: 2}
   collection: {fileID: 11400000, guid: 1030f6c815b576046a304b0907931f0f, type: 2}
 --- !u!135 &1099831676
 SphereCollider:
@@ -584,6 +586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: {fileID: 11400000, guid: e1fd649b90b5a454d9d839247d35a2dd, type: 2}
+  pickUpSound: {fileID: 11400000, guid: 4ac5ac733d2b20e409f55a4359fc328e, type: 2}
   collection: {fileID: 11400000, guid: 283b36789a36bb649bcae8400b757330, type: 2}
 --- !u!136 &1224222204
 CapsuleCollider:
@@ -811,6 +814,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: {fileID: 11400000, guid: e1fd649b90b5a454d9d839247d35a2dd, type: 2}
+  pickUpSound: {fileID: 11400000, guid: 4ac5ac733d2b20e409f55a4359fc328e, type: 2}
   collection: {fileID: 11400000, guid: 283b36789a36bb649bcae8400b757330, type: 2}
 --- !u!1 &1548190250
 GameObject:
@@ -1241,22 +1245,6 @@ PrefabInstance:
     - target: {fileID: 7505752266019539302, guid: f3c4ca59fe8952a46888a06303d70982, type: 3}
       propertyPath: m_Name
       value: Common Core Element
-      objectReference: {fileID: 0}
-    - target: {fileID: 8052808699919791131, guid: f3c4ca59fe8952a46888a06303d70982, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.000000017626022
-      objectReference: {fileID: 0}
-    - target: {fileID: 8052808699919791131, guid: f3c4ca59fe8952a46888a06303d70982, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.0000000019714799
-      objectReference: {fileID: 0}
-    - target: {fileID: 8052808700330774836, guid: f3c4ca59fe8952a46888a06303d70982, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 9.768096e-10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8052808700330774836, guid: f3c4ca59fe8952a46888a06303d70982, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 1.2744925e-10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3c4ca59fe8952a46888a06303d70982, type: 3}

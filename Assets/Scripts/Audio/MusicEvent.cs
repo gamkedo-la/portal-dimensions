@@ -21,6 +21,11 @@ namespace SoundSystem
         public AudioClip[] MusicLayers => musicLayers;
         public LayerType LayerType => layerType;
         public AudioMixerGroup Mixer => Mixer;
+
+        public void Play(float fadeTime)
+        {
+            MusicManager.Instance.PlayMusic(this, fadeTime);
+        }
     }
 }
 

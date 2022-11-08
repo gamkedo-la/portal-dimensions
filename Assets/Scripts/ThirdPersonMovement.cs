@@ -26,11 +26,15 @@ public class ThirdPersonMovement : MonoBehaviour
     bool isRunning = false;
     bool runBoostActive = false;
 
+    CameraController cameraController;
+
     private void Start()
     {
         walkingSpeed = speed;
         runningSpeed = speed * 1.5f;
         runBoostSpeed = speed * 2.2f;
+
+        cameraController = Camera.main.GetComponent<CameraController>();
     }
 
     void Update()
@@ -68,7 +72,7 @@ public class ThirdPersonMovement : MonoBehaviour
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
-            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            Vector3 moveDir = cameraController.PlanarRotation * direction;//Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * currentSpeed * Time.deltaTime);
 
 

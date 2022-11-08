@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6acaa37f1d08af649980a94fd692aec0, type: 3}
   m_Name: Music
   m_EditorClassIdentifier: 
-  musicLayers: []
+  musicLayers:
+  - {fileID: 8300000, guid: 7093229c9b54b5148882fb5a9323546a, type: 3}
   layerType: 0
-  mixer: []
+  mixer:
+  - {fileID: 24300002, guid: 222b554d5b3e19e4f88b23fea1bbe0da, type: 2}
