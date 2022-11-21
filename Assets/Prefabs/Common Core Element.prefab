@@ -2055,8 +2055,6 @@ MonoBehaviour:
   framingOffSet: {x: 0, y: 1}
   invertX: 0
   invertY: 0
-  invertXVal: 0
-  invertYVal: 0
 --- !u!1 &8052808700367492092
 GameObject:
   m_ObjectHideFlags: 0

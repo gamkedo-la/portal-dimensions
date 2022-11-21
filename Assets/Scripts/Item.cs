@@ -11,10 +11,24 @@ public class Item : MonoBehaviour
     public ItemType ItemType => itemType;
     [SerializeField] ItemCollection collection;
 
+    private AudioManager audioManager;
+    [SerializeField] string soundName;
+
+    
+
     private void OnEnable()
     {
         if(GetComponent<MeshRenderer>() != null)
             GetComponent<MeshRenderer>().material.color = itemType.itemColor;
+    }
+
+    private void Start()
+    {
+        audioManager = AudioManager.instance;
+        if(audioManager == null)
+        {
+            Debug.LogError("No audio manager found in scene");
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -26,7 +40,8 @@ public class Item : MonoBehaviour
             {
                 collection.Add(gameObject.GetComponent<Item>());
             }
-            pickUpSound.Play(2.5f);
+            //pickUpSound.Play(2.5f);
+            audioManager.Play(soundName);
             Destroy(gameObject);
         }
     }

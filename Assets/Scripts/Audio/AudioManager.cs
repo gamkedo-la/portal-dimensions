@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
     public Sound[] sounds;
 
     public static AudioManager instance;
+    
 
     // Start is called before the first frame update
     void Awake()
@@ -34,7 +35,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        Play("Theme");
+        //Play("Theme");
     }
 
     public void Play(string name)
