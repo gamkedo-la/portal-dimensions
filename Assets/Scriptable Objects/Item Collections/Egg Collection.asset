@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Egg Collection
   m_EditorClassIdentifier: 
   itemName: 
-  amount: 2
+  amount: 0
   worth: 1
   artwork: {fileID: 0}
