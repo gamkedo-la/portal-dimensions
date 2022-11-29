@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 106
+  controlID: 54
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 96
+  controlID: 55
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 97
+  controlID: 56
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -189,8 +189,8 @@ MonoBehaviour:
     y: 0
     width: 366
     height: 774
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -269,8 +269,8 @@ MonoBehaviour:
     y: 0
     width: 604
     height: 1307
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -501,9 +501,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 519.62805, y: 5.2879376, z: 494.17087}
+    m_Target: {x: 470.38165, y: -0.23447312, z: 497.69455}
     speed: 2
-    m_Value: {x: 519.62805, y: 5.2879376, z: 494.17087}
+    m_Value: {x: 470.38165, y: -0.23447312, z: 497.69455}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -550,13 +550,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.12211842, y: 0.24361792, z: -0.030964335, w: -0.9617303}
+    m_Target: {x: 0.07501732, y: -0.7328788, z: 0.08193324, w: 0.67135173}
     speed: 2
-    m_Value: {x: -0.12210948, y: 0.24360009, z: -0.030962069, w: -0.9616599}
+    m_Value: {x: 0.07501113, y: -0.73281837, z: 0.08192648, w: 0.67129636}
   m_Size:
-    m_Target: 1.1277905
+    m_Target: 12.397247
     speed: 2
-    m_Value: 1.1277905
+    m_Value: 12.397247
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -612,9 +612,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 80f7feff98fbfeffdafcfeff5afefeffd0fffeff1201ffff4c02ffffce04ffff1806ffff9007ffff0e09ffff860affff040cffff060effff740fffffd610ffff4612ffffd413ffff5c16ffffca17fffffc18ffff2e1affff601bffff921cffffc41dfffffe1effff6c20ffff2222ffff6423ffffd224ffffac26ffff1228ffff7a29fffff02affff222cffff542dffff1e2fffffc841ffff20d3ffff34d3ffff54d3ffff7ad3ffff7cd3ffff80dbfffff8deffff9ce8ffffcee9ffff10ebffff78ecffffbcefffff72f2ffffb4f3ffffc6f5ffff1afbfffff4ffffff6e6800007868000002740000067400007474000078740000188500001c850000288500006c850000
+      m_SelectedIDs: 06d9ffff
+      m_LastClickedID: -9978
+      m_ExpandedIDs: 06d9ffffa6d9ffff7edbffff80dbffff34f1ffff3af5ffff3cf5ffff18f9ffff1af9ffff1afbffffde6a0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -771,22 +771,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Scripts
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\colto\OneDrive\Documents\Unity Projects\portal-dimensions
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 12620000
-    m_LastClickedID: 25106
-    m_ExpandedIDs: 00000000fa610000fc610000fe610000
+    m_SelectedIDs: 98610000
+    m_LastClickedID: 24984
+    m_ExpandedIDs: 000000007c6100007e61000080610000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -814,7 +814,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000fa610000fc610000fe610000
+    m_ExpandedIDs: 000000007c6100007e61000080610000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
