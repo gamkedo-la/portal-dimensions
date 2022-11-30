@@ -3,14 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBase : MonoBehaviour
+public abstract class EnemyBase : MonoBehaviour
 {
-    public static event Action<EnemyBase> OnEnemyKilled;
-    [SerializeField] float health, maxHealth = 3f;
-    [SerializeField] float moveSpeed = 5f;
-    Rigidbody rb;
-    Transform target;
-    Vector3 moveDirection;
+    [SerializeField] protected float moveSpeed = 5f;
+    protected Rigidbody rb;
+    protected Transform target;
+    protected Vector3 moveDirection;
+    public HealthBase health;
+    [SerializeField] protected int maxHealth;
+
+    public float turnSmoothTime = 0.1f;
+    float turnSmoothVelocity;
 
     private void Awake()
     {
@@ -20,7 +23,7 @@ public class EnemyBase : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = maxHealth;   
+        health = new HealthBase(maxHealth, gameObject);
     }
 
     // Update is called once per frame
@@ -29,7 +32,9 @@ public class EnemyBase : MonoBehaviour
         if(target)
         {
             Vector3 direction = (target.position - transform.position).normalized;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             rb.rotation = Quaternion.Euler(0f, angle, 0f);
             moveDirection = direction;
         }
@@ -45,18 +50,22 @@ public class EnemyBase : MonoBehaviour
     {
         if(target)
         {
-            rb.velocity = new Vector3(moveDirection.x, moveDirection.y) * moveSpeed;
+            rb.velocity = new Vector3(moveDirection.x, 0, moveDirection.z) * moveSpeed;
         }
     }
 
-    public void TakeDamage(float amount)
+    private void OnEnable()
     {
-        health -= amount;
+        HealthBase.OnKilled += Killed;
+    }
 
-        if(health <= 0)
-        {
-            Destroy(gameObject);
-            OnEnemyKilled?.Invoke(this);
-        }
+    private void OnDisable()
+    {
+        HealthBase.OnKilled -= Killed;
+    }
+
+    protected virtual void Killed(GameObject character)
+    {
+        Debug.Log(gameObject.name + "Killed");       
     }
 }
