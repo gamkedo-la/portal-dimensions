@@ -8,7 +8,11 @@ public class PlayerRunState : PlayerBaseState
     : base(currentContext, playerStateFactory) { }
     public override void EnterState()
     {
-        throw new System.NotImplementedException();
+        //set walking animation to false
+        //set running animation to true
+        //set walking sound to false
+        //set running sound to true
+        Debug.Log("PlayerRunState EnterState");
     }
 
     public override void UpdateState()
@@ -18,16 +22,23 @@ public class PlayerRunState : PlayerBaseState
 
     public override void ExitState()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("PlayerRunState ExitState");
     }
 
     public override void CheckSwitchStates()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void InitializeSubState()
     {
-        throw new System.NotImplementedException();
+        if (!Ctx.IsMoving)
+        {
+            SetSubState(Factory.Idle());
+        }
+        else if (Ctx.IsMoving && !Ctx.IsRunning)
+        {
+            SetSubState(Factory.Walk());
+        }
     }
 }
