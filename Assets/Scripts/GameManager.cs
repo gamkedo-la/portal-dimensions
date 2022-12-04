@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         //********* Debug zone *********
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            playerHealth.Damage(1);
+            playerHealth.TakeDamage(1);
             Debug.Log("Health is at " + playerHealth.GetHealth());
         }
         if (Input.GetKeyDown(KeyCode.H))

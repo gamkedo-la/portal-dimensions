@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class HealthBase
+public class HealthBase : IDamageable
 {
     public static event Action<GameObject> OnKilled;
     private int health;
@@ -20,7 +20,7 @@ public class HealthBase
         return health;  
     }
 
-    public void Damage(int damageAmount)
+    public void TakeDamage(int damageAmount)
     {
         health -= damageAmount;
         if(health < 0)
@@ -36,5 +36,10 @@ public class HealthBase
         health += healAmount;
         if (health > healthMax)
             health = healthMax;
+    }
+
+    public Transform GetTransform()
+    {
+        return this.GetTransform();
     }
 }
