@@ -2,8 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.Pool;
 
-public abstract class EnemyBase : MonoBehaviour
+public abstract class EnemyBase : PoolableObject
 {
     [SerializeField] protected float moveSpeed = 5f;
     protected Rigidbody rb;
@@ -11,6 +13,8 @@ public abstract class EnemyBase : MonoBehaviour
     protected Vector3 moveDirection;
     public HealthBase health;
     [SerializeField] protected int maxHealth;
+    public EnemyMovement movement;
+    public NavMeshAgent agent;
 
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
@@ -59,9 +63,11 @@ public abstract class EnemyBase : MonoBehaviour
         HealthBase.OnKilled += Killed;
     }
 
-    private void OnDisable()
+    public override void OnDisable()
     {
+        base.OnDisable();
         HealthBase.OnKilled -= Killed;
+        agent.enabled = false;
     }
 
     protected virtual void Killed(GameObject character)

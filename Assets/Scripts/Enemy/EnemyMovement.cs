@@ -10,15 +10,25 @@ public class EnemyMovement : MonoBehaviour
     public float updateSpeed = 0.1f;
 
     private NavMeshAgent agent;
-    
+
+    private Coroutine FollowCoroutine;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();  
     }
     // Start is called before the first frame update
-    void Start()
+    public void StartChasing()
     {
-        StartCoroutine(FollowTarget());
+        if(FollowCoroutine == null)
+        {
+            StartCoroutine(FollowTarget());
+        }
+        else
+        {
+            Debug.LogWarning("Called StartChasing on Enemy that is already chasing! This is likely a bug in some calling class!");
+        }
+
     }
 
     // Update is called once per frame
