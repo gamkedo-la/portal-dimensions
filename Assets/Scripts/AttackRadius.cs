@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(SphereCollider))]
 public class AttackRadius : MonoBehaviour
 {
+    public SphereCollider sphereCollider;
     private List<IDamageable> Damageables = new List<IDamageable>();
     public int damage = 10;
     public float attackDelay = 0.5f;
@@ -12,11 +13,17 @@ public class AttackRadius : MonoBehaviour
     public AttackEvent OnAttack;
     private Coroutine AttackCoroutine;
 
+    private void Awake()
+    {
+        sphereCollider = GetComponent<SphereCollider>();
+    }
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Triggered by " + other.name);
         IDamageable damageable = other.GetComponent<IDamageable>();
         if(damageable != null)
         {
+            Debug.Log("AttackRadius OnTriggerEnter()");
             Damageables.Add(damageable);
 
             if(AttackCoroutine == null)
@@ -43,6 +50,7 @@ public class AttackRadius : MonoBehaviour
 
     private IEnumerator Attack()
     {
+        Debug.Log("AttackRadius Attack()");
         WaitForSeconds Wait = new WaitForSeconds(attackDelay);
 
         yield return Wait;

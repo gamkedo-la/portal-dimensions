@@ -3,17 +3,22 @@ using System.Collections.Generic;
 using TreeEditor;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : HealthBase
 {
     [SerializeField] AttackRadius attackRadius;
     private Coroutine LookCoroutine;
-    public HealthBase health;
-    [SerializeField] protected int maxHealth;
+    //public HealthBase health;
+    //[SerializeField] protected int maxHealth;
+
+    public Player(int healthMax, GameObject character) : base(healthMax, character)
+    {
+
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        health = new HealthBase(maxHealth, gameObject);
+        //health = new HealthBase(maxHealth, gameObject);
     }
 
     // Update is called once per frame
@@ -24,14 +29,14 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
-        HealthBase.OnKilled += Killed;
-        //attackRadius.OnAttack += OnAttack;
+        //HealthBase.OnKilled += Killed;
+        attackRadius.OnAttack += OnAttack;
     }
 
     private void OnDisable()
     {
-        HealthBase.OnKilled -= Killed;
-        //attackRadius.OnAttack -= OnAttack;
+        //HealthBase.OnKilled -= Killed;
+        attackRadius.OnAttack -= OnAttack;
     }
 
     private void OnAttack(IDamageable target)
@@ -48,25 +53,26 @@ public class Player : MonoBehaviour
 
     private IEnumerator LookAt(Transform target)
     {
-        Quaternion  lookRotation = Quaternion.LookRotation(target.position - transform.position);
+        //Quaternion lookRotation = Quaternion.LookRotation(target.position - transform.position);
+        Vector3 lookAtPos = target.position;
+
         float time = 0;
 
-        while(time < 1)
+        while (time < 1)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, time);
+            //transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, time);
+            lookAtPos.y = transform.position.y;
+            transform.LookAt(lookAtPos);
 
             time += Time.deltaTime * 2;
             yield return null;
         }
 
-        transform.rotation = lookRotation;
+        //transform.rotation = lookRotation;
     }
 
-    private void Killed(GameObject character)
+    protected override void Killed(GameObject character)
     {
-        if (character == gameObject)
-        {
-            Debug.Log(gameObject.name + "Killed");
-        }
+        base.Killed(character);
     }
 }

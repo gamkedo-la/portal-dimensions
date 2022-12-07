@@ -12,7 +12,7 @@ public class PlayerRunState : PlayerBaseState
         //set running animation to true
         //set walking sound to false
         //set running sound to true
-        Debug.Log("PlayerRunState EnterState");
+       // Debug.Log("PlayerRunState EnterState");
     }
 
     public override void UpdateState()
@@ -22,7 +22,7 @@ public class PlayerRunState : PlayerBaseState
 
     public override void ExitState()
     {
-        Debug.Log("PlayerRunState ExitState");
+        //Debug.Log("PlayerRunState ExitState");
     }
 
     public override void CheckSwitchStates()

@@ -1,11 +1,12 @@
 using System;
 using UnityEngine;
 
-public class HealthBase : IDamageable
+public class HealthBase : MonoBehaviour, IDamageable
 {
-    public static event Action<GameObject> OnKilled;
+    //public static event Action<GameObject> OnKilled;
+    public static event Action<GameObject> OnHealthChanged;
     private int health;
-    private int healthMax;
+    [SerializeField] public int healthMax;
     private GameObject character;
 
     public HealthBase(int healthMax, GameObject character)
@@ -23,11 +24,13 @@ public class HealthBase : IDamageable
     public void TakeDamage(int damageAmount)
     {
         health -= damageAmount;
-        if(health < 0)
+        OnHealthChanged?.Invoke(character);
+        if (health < 0)
             health = 0;
         if(health <= 0)
         {
-            OnKilled?.Invoke(character);
+            Killed(character);
+            //OnKilled?.Invoke(character);
         }
     }
 
@@ -38,8 +41,13 @@ public class HealthBase : IDamageable
             health = healthMax;
     }
 
+    protected virtual void Killed(GameObject character)
+    {
+        Debug.Log(gameObject.name + "Killed");
+    }
+
     public Transform GetTransform()
     {
-        return this.GetTransform();
+        return gameObject.transform;
     }
 }

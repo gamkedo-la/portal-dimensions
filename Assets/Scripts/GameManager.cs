@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] List<ItemCollection> item;
     [SerializeField] List<TMP_Text> itemText;
+    [SerializeField] TMP_Text healthText;
     [SerializeField] Player player;
     private HealthBase playerHealth;
 
@@ -18,6 +20,7 @@ public class GameManager : MonoBehaviour
         {
             item[i].Changed += DisplayHUB;
         }
+        HealthBase.OnHealthChanged += UpdateHealth;
     }
 
     private void OnDisable()
@@ -26,6 +29,7 @@ public class GameManager : MonoBehaviour
         {
             item[i].Changed -= DisplayHUB;
         }
+        HealthBase.OnHealthChanged -= UpdateHealth;
     }
 
     // Start is called before the first frame update
@@ -35,7 +39,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("No player set");
         }
-        playerHealth = player.health;
+        playerHealth = player;
         DisplayHUB();
     }
 
@@ -64,5 +68,11 @@ public class GameManager : MonoBehaviour
                 itemText[i].text = item[i].amount.ToString();
             }
         }
+        healthText.text = playerHealth.GetHealth().ToString();
+    }
+
+    void UpdateHealth(GameObject character)
+    {
+        healthText.text = playerHealth.GetHealth().ToString();
     }
 }

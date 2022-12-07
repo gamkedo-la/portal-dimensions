@@ -12,7 +12,7 @@ public class PlayerGroundedState : PlayerBaseState
     }
     public override void EnterState()
     {
-        Debug.Log("PlayerGroundedState EnterState");
+        //Debug.Log("PlayerGroundedState EnterState");
     }
 
     public override void UpdateState()
@@ -22,7 +22,7 @@ public class PlayerGroundedState : PlayerBaseState
 
     public override void ExitState()
     {
-        Debug.Log("PlayerGroundedState ExitState");
+        //Debug.Log("PlayerGroundedState ExitState");
     }
 
     public override void CheckSwitchStates()

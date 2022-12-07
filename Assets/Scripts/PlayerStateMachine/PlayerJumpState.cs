@@ -14,7 +14,7 @@ public class PlayerJumpState : PlayerBaseState
     public override void EnterState()
     {
         Jump();
-        Debug.Log("PlayerJumpState EnterState");
+        //Debug.Log("PlayerJumpState EnterState");
     }
 
     public override void UpdateState()
@@ -25,7 +25,7 @@ public class PlayerJumpState : PlayerBaseState
 
     public override void ExitState()
     {     
-        Debug.Log("PlayerJumpState ExitState");
+        //Debug.Log("PlayerJumpState ExitState");
     }
 
     public override void CheckSwitchStates()

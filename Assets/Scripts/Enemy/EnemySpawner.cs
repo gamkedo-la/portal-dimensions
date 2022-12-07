@@ -63,7 +63,7 @@ public class EnemySpawner : MonoBehaviour
         DoSpawnEnemy(Random.Range(0, enemyPrefabs.Count));
     }
 
-    private void DoSpawnEnemy(int spawnIndex)
+    public void DoSpawnEnemy(int spawnIndex)
     {
         PoolableObject poolableObject = enemyObjectPools[spawnIndex].GetObject();
 

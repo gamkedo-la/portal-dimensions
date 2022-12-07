@@ -10,7 +10,9 @@ public class EnemyMovement : MonoBehaviour
     public float updateSpeed = 0.1f;
 
     private NavMeshAgent agent;
+    private float distanceFromTarget;
 
+    public EnemyScriptableObject enemy;
     private Coroutine FollowCoroutine;
 
     private void Awake()
@@ -43,7 +45,18 @@ public class EnemyMovement : MonoBehaviour
 
         while(enabled)
         {
-            agent.SetDestination(target.transform.position);
+            distanceFromTarget = Vector3.Distance(transform.position, target.position);
+
+            if(distanceFromTarget <= enemy.stoppingDistance)
+            {
+                agent.isStopped = true;
+            }
+            else
+            {
+                agent.isStopped = false;
+                agent.SetDestination(target.transform.position);
+            }
+            
 
             yield return wait;
         }
