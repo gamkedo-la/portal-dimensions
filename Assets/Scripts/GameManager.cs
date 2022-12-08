@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] List<TMP_Text> itemText;
     [SerializeField] TMP_Text healthText;
     [SerializeField] Player player;
-    private HealthBase playerHealth;
+    //private HealthBase playerHealth;
 
     private void OnEnable()
     {
@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("No player set");
         }
-        playerHealth = player;
+        //playerHealth = player;
         DisplayHUB();
     }
 
@@ -49,13 +49,13 @@ public class GameManager : MonoBehaviour
         //********* Debug zone *********
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            playerHealth.TakeDamage(1);
-            Debug.Log("Health is at " + playerHealth.GetHealth());
+            player.TakeDamage(1);
+            Debug.Log("Health is at " + player.GetHealth());
         }
         if (Input.GetKeyDown(KeyCode.H))
         {
-            playerHealth.Heal(1);
-            Debug.Log("Health is at " + playerHealth.GetHealth());
+            player.Heal(1);
+            Debug.Log("Health is at " + player.GetHealth());
         }
     }
 
@@ -68,11 +68,11 @@ public class GameManager : MonoBehaviour
                 itemText[i].text = item[i].amount.ToString();
             }
         }
-        healthText.text = playerHealth.GetHealth().ToString();
+        healthText.text = player.GetHealth().ToString();
     }
 
     void UpdateHealth(GameObject character)
     {
-        healthText.text = playerHealth.GetHealth().ToString();
+        healthText.text = player.GetHealth().ToString();
     }
 }

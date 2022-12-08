@@ -337,6 +337,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthMax: 100
+  hurtSound: 
+  killedSound: 
+  healSound: 
+  enemy: {fileID: 11400000, guid: 120f0a1f23d5635498b8746faa332355, type: 2}
 --- !u!65 &3961300336333962239
 BoxCollider:
   m_ObjectHideFlags: 0

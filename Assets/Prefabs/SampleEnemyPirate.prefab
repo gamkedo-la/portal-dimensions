@@ -433,3 +433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthMax: 100
+  hurtSound: 
+  killedSound: 
+  healSound: 
+  enemy: {fileID: 11400000, guid: 424580667177dec499a38cb403e00a3b, type: 2}

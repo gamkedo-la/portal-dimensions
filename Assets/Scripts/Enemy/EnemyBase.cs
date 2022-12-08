@@ -23,56 +23,29 @@ public abstract class EnemyBase : PoolableObject, IDamageable
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
 
+    protected AudioManager audioManager;
+    public string attackSound;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         health = GetComponent<HealthBase>();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //health = new HealthBase(maxHealth, gameObject);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        /*
-        if(target)
-        {
-            Vector3 direction = (target.position - transform.position).normalized;
-            //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            rb.rotation = Quaternion.Euler(0f, angle, 0f);
-            moveDirection = direction;
-        }
-        */
-    }
-
-    /*
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag == "Player")
-            target = other.gameObject.transform;
-    }
-    
-
-    private void FixedUpdate()
-    {
-        if(target)
-        {
-            rb.velocity = new Vector3(moveDirection.x, 0, moveDirection.z) * moveSpeed;
-        }
-    }
-    */
-
     private void OnEnable()
     {
         //HealthBase.OnKilled += Killed;
         attackRadius.OnAttack += OnAttack;
         SetUpAgentFromConfiguration();
+    }
+
+    private void Start()
+    {
+        audioManager = AudioManager.instance;
+        if (audioManager == null)
+        {
+            Debug.LogError("No audio manager found in scene");
+        }
+        attackSound = enemy.attackSound;
     }
 
     public override void OnDisable()
@@ -87,6 +60,7 @@ public abstract class EnemyBase : PoolableObject, IDamageable
     {
         //place animation here
         Debug.Log("Attacking!");
+        audioManager.Play(attackSound);
         if (LookCoroutine != null)
         {
             StopCoroutine(LookCoroutine);

@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicLayers:
   - {fileID: 8300000, guid: 7093229c9b54b5148882fb5a9323546a, type: 3}
+  - {fileID: 8300000, guid: 3b9b828a544594649a35fb7286b874b5, type: 3}
+  - {fileID: 8300000, guid: 4ac03e49e03e2014f88eb4d5dd584d3b, type: 3}
+  - {fileID: 8300000, guid: 3243c14e72d994b4797a1dfdb9c97f33, type: 3}
   layerType: 0
   mixer:
   - {fileID: 24300002, guid: 222b554d5b3e19e4f88b23fea1bbe0da, type: 2}
