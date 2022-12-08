@@ -27,7 +27,3 @@ MonoBehaviour:
   radius: 0.5
   speed: 3
   stoppingDistance: 3
-  attackSound: SwordAttack
-  hurtSound: 
-  killedSound: 
-  healSound: 

@@ -26,9 +26,4 @@ public class EnemyScriptableObject : ScriptableObject
     public float radius = 0.5f;
     public float speed = 3f;
     public float stoppingDistance = 0.5f;
-
-    public string attackSound;
-    public string hurtSound;
-    public string killedSound;
-    public string healSound;
 }

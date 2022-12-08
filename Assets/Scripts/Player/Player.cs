@@ -1,4 +1,3 @@
-using SoundSystem;
 using System.Collections;
 using System.Collections.Generic;
 using TreeEditor;
@@ -8,33 +7,43 @@ public class Player : HealthBase
 {
     [SerializeField] AttackRadius attackRadius;
     private Coroutine LookCoroutine;
+    //public HealthBase health;
+    //[SerializeField] protected int maxHealth;
 
-    public string attackSound;
-
-    /*
     public Player(int healthMax, GameObject character) : base(healthMax, character)
     {
-        base.healthMax = healthMax;
+
     }
-    */
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        //health = new HealthBase(maxHealth, gameObject);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 
     private void OnEnable()
     {
+        //HealthBase.OnKilled += Killed;
         attackRadius.OnAttack += OnAttack;
     }
 
     private void OnDisable()
     {
+        //HealthBase.OnKilled -= Killed;
         attackRadius.OnAttack -= OnAttack;
     }
 
     private void OnAttack(IDamageable target)
     {
         //place animation here
-        //place attack sound here
-        //audioManager.Play(attackSound);
 
-        if (LookCoroutine != null)
+        if(LookCoroutine != null)
         {
             StopCoroutine(LookCoroutine);
         }
