@@ -13,7 +13,7 @@ public abstract class EnemyBase : PoolableObject, IDamageable
     protected Transform target;
     protected Vector3 moveDirection;
     public HealthBase health;
-    public EnemyScriptableObject enemy;
+    public AttackScriptableObject enemy;
     [SerializeField] protected int maxHealth;
     public EnemyMovement movement;
     public NavMeshAgent agent;
@@ -36,7 +36,6 @@ public abstract class EnemyBase : PoolableObject, IDamageable
     {
         //HealthBase.OnKilled += Killed;
         attackRadius.OnAttack += OnAttack;
-        SetUpAgentFromConfiguration();
     }
 
     private void Start()
@@ -46,7 +45,7 @@ public abstract class EnemyBase : PoolableObject, IDamageable
         {
             Debug.LogError("No audio manager found in scene");
         }
-        attackSound = enemy.attackSound;
+        //attackSound = enemy.attackSound;
     }
 
     public override void OnDisable()
@@ -99,28 +98,5 @@ public abstract class EnemyBase : PoolableObject, IDamageable
     public Transform GetTransform()
     {
         return transform;
-    }
-
-    public virtual void SetUpAgentFromConfiguration()
-    {
-        agent.acceleration = enemy.acceleration;
-        agent.angularSpeed = enemy.angularSpeed;
-        agent.areaMask = enemy.areaMask;
-        agent.avoidancePriority = enemy.avoidancePriority;
-        agent.baseOffset = enemy.baseOffset;
-        agent.height = enemy.height;
-        agent.obstacleAvoidanceType = enemy.obstacleAvoidanceType;
-        agent.radius = enemy.radius;
-        agent.speed = enemy.speed;
-        agent.stoppingDistance = enemy.stoppingDistance;
-
-        movement.updateSpeed = enemy.aiUpdateInterval;
-
-        //health = new HealthBase(enemy.health, gameObject);
-        health.healthMax = enemy.health;
-
-        attackRadius.sphereCollider.radius = enemy.attackRadius;
-        attackRadius.attackDelay = enemy.attackDelay;
-        attackRadius.damage = enemy.damage;
     }
 }

@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9a350307c484cd439099080d43f6ae0, type: 3}
-  m_Name: Pirate Enemy
+  m_Name: Pirate Enemy Homing Bullet
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7006517545871504406, guid: 06de7be8f82d745428f878b619bb43f6, type: 3}
-  attackConfiguration: {fileID: 11400000, guid: d9e802363e622474593de5e3771ebd3b, type: 2}
-  health: 200
+  prefab: {fileID: 7006517545871504406, guid: 96fa835a890f095458a80b78b103abad, type: 3}
+  attackConfiguration: {fileID: 11400000, guid: 7b66c36e392d6274f8e9a5ec4ac200ff, type: 2}
+  health: 100
   aiUpdateInterval: 0.1
   acceleration: 8
   angularSpeed: 120
   areaMask: -1
   avoidancePriority: 50
   baseOffset: 0
-  height: 3
+  height: 2
   obstacleAvoidanceType: 1
-  radius: 0.33
+  radius: 0.5
   speed: 3
-  stoppingDistance: 15
+  stoppingDistance: 0.5

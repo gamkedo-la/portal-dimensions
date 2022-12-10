@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5297106389984609272}
   - component: {fileID: 3141323081040060008}
   - component: {fileID: 3684818143544913099}
-  - component: {fileID: 8169347944213383537}
+  - component: {fileID: 5298305027052107844}
   m_Layer: 10
   m_Name: PirateAttackRadius
   m_TagString: Untagged
@@ -98,7 +98,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8169347944213383537
+--- !u!114 &5298305027052107844
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,12 +107,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 585819818692595220}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 634df479bd404c04399ebe8826486d11, type: 3}
+  m_Script: {fileID: 11500000, guid: 3cc083329e5fed942920897df892a85b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sphereCollider: {fileID: 3684818143544913099}
   damage: 10
   attackDelay: 0.5
+  Agent: {fileID: 7006517545871504408}
+  BulletPrefab: {fileID: 2440199444222628826, guid: f0289abd2db384748b3f781583e4d028, type: 3}
+  BulletSpawnOffset: {x: 0, y: 1, z: 0}
+  Mask:
+    serializedVersion: 2
+    m_Bits: 129
+  SpherecastRadius: 0.1
 --- !u!1 &7006517543879003172
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,12 +384,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   health: {fileID: 0}
-  enemy: {fileID: 11400000, guid: 424580667177dec499a38cb403e00a3b, type: 2}
+  enemy: {fileID: 11400000, guid: d9e802363e622474593de5e3771ebd3b, type: 2}
   maxHealth: 10
   movement: {fileID: 7006517545871504409}
   agent: {fileID: 7006517545871504408}
-  attackRadius: {fileID: 8169347944213383537}
+  attackRadius: {fileID: 5298305027052107844}
   turnSmoothTime: 0.01
+  attackSound: 
 --- !u!195 &7006517545871504408
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -390,7 +398,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7006517545871504402}
-  m_Enabled: 0
+  m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
@@ -433,3 +441,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthMax: 100
+  attacker: {fileID: 11400000, guid: d9e802363e622474593de5e3771ebd3b, type: 2}
+  hurtSound: 
+  killedSound: 
+  healSound: 
+  enemy: {fileID: 11400000, guid: 424580667177dec499a38cb403e00a3b, type: 2}

@@ -6,18 +6,18 @@ using UnityEngine;
 public class AttackRadius : MonoBehaviour
 {
     public SphereCollider sphereCollider;
-    private List<IDamageable> Damageables = new List<IDamageable>();
+    protected List<IDamageable> Damageables = new List<IDamageable>();
     public int damage = 10;
     public float attackDelay = 0.5f;
     public delegate void AttackEvent(IDamageable Target);
     public AttackEvent OnAttack;
-    private Coroutine AttackCoroutine;
+    protected Coroutine AttackCoroutine;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         sphereCollider = GetComponent<SphereCollider>();
     }
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         Debug.Log("Triggered by " + other.name);
         IDamageable damageable = other.GetComponent<IDamageable>();
@@ -28,16 +28,17 @@ public class AttackRadius : MonoBehaviour
 
             if(AttackCoroutine == null)
             {
+                Debug.Log("AttackCorourine == null");
                 AttackCoroutine = StartCoroutine(Attack());
             }
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    protected virtual void OnTriggerExit(Collider other)
     {
         IDamageable damageable = other.GetComponent<IDamageable>();
-
-        if(damageable != null)
+        Debug.Log("AttackRadius OnTriggerExit()");
+        if (damageable != null)
         {
             Damageables.Remove(damageable);
             if(Damageables.Count == 0)
@@ -48,7 +49,7 @@ public class AttackRadius : MonoBehaviour
         }
     }
 
-    private IEnumerator Attack()
+    protected virtual IEnumerator Attack()
     {
         Debug.Log("AttackRadius Attack()");
         WaitForSeconds Wait = new WaitForSeconds(attackDelay);
@@ -89,7 +90,7 @@ public class AttackRadius : MonoBehaviour
         AttackCoroutine = null;
     }
 
-    private bool DisabledDamageables(IDamageable damageable)
+    protected bool DisabledDamageables(IDamageable damageable)
     {
         return damageable != null && !damageable.GetTransform().gameObject.activeSelf;
     }

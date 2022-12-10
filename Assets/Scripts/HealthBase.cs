@@ -9,6 +9,7 @@ public class HealthBase : MonoBehaviour, IDamageable
     private int health;
     [SerializeField] public int healthMax;
     private GameObject character;
+    public AttackScriptableObject attacker;
 
     protected AudioManager audioManager;
     public string hurtSound;
@@ -32,6 +33,9 @@ public class HealthBase : MonoBehaviour, IDamageable
         }
 
         health = healthMax;
+        //hurtSound = attacker.hurtSound;
+        //killedSound = attacker.killedSound;
+        //healSound = attacker.healSound;
     }
 
     public int GetHealth()
