@@ -8,18 +8,21 @@ public class EnemySpawner : MonoBehaviour
     public Transform player;
     public int numOfEnemiesToSpawn;
     public float spawnDelay;
-    public List<EnemyScriptableObject> enemies = new List<EnemyScriptableObject>();
+    public List<WeightedSpawnScriptableObject> weightedEnemies = new List<WeightedSpawnScriptableObject>();
     public SpawnMethod enemySpawnMethod =  SpawnMethod.RoundRobin;
+    [SerializeField] private float[] weights;
 
     private NavMeshTriangulation triangulation;
     private Dictionary<int, ObjectPool> enemyObjectPools = new Dictionary<int, ObjectPool>();
 
     private void Awake()
     {
-        for(int i = 0; i < enemies.Count; i++)
+        for(int i = 0; i < weightedEnemies.Count; i++)
         {
-            enemyObjectPools.Add(i, ObjectPool.CreateInstance(enemies[i].prefab, numOfEnemiesToSpawn));
+            enemyObjectPools.Add(i, ObjectPool.CreateInstance(weightedEnemies[i].enemy.prefab, numOfEnemiesToSpawn));
         }
+
+        weights = new float[weightedEnemies.Count];
     }
 
     private void Start()
@@ -30,6 +33,8 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnEnemies()
     {
+        ResetSpawnWeights();
+
         WaitForSeconds wait = new WaitForSeconds(spawnDelay);
 
         int spawnedEnemies = 0;
@@ -44,6 +49,10 @@ public class EnemySpawner : MonoBehaviour
             {
                 SpawnRandomEnemy();
             }
+            else if(enemySpawnMethod == SpawnMethod.WeightedRandom)
+            {
+                SpawnWeightedRandomEnemy();
+            }
 
             spawnedEnemies++;
 
@@ -51,31 +60,71 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    private void ResetSpawnWeights()
+    {
+        float totalWeight = 0;
+
+        for(int i = 0; i < weightedEnemies.Count; i++)
+        {
+            weights[i] = weightedEnemies[i].GetWeight();
+            totalWeight += weights[i];
+        }
+
+        for(int i = 0; i < weights.Length; i++)
+        {
+            weights[i] = weights[i] / totalWeight;
+        }
+    }
+
     private void SpawnRoundRobinEnemy(int spawnedEnemies)
     {
-        int spawnIndex = spawnedEnemies % enemies.Count;
+        int spawnIndex = spawnedEnemies % weightedEnemies.Count;
 
-        DoSpawnEnemy(spawnIndex);
+        DoSpawnEnemy(spawnIndex, ChooseRandomPositionOnNavMesh());
     }
 
     private void SpawnRandomEnemy()
     {
-        DoSpawnEnemy(Random.Range(0, enemies.Count));
+        DoSpawnEnemy(Random.Range(0, weightedEnemies.Count), ChooseRandomPositionOnNavMesh());
     }
 
-    public void DoSpawnEnemy(int spawnIndex)
+    private void SpawnWeightedRandomEnemy()
+    {
+        float value = Random.value;
+
+        for(int i = 0; i < weights.Length; i++)
+        {
+            if(value < weights[i])
+            {
+                DoSpawnEnemy(i, ChooseRandomPositionOnNavMesh());
+                return;
+            }
+
+            value -= weights[i];
+        }
+
+        Debug.LogError("Invalid configuration! Could not spawn a weighted random enemy. Did you forget to call ResetSpawnWeights()?");
+    }
+
+    private Vector3 ChooseRandomPositionOnNavMesh()
+    {
+        int vertexIndex = Random.Range(0, triangulation.vertices.Length);
+        return triangulation.vertices[vertexIndex];
+    }
+
+    public void DoSpawnEnemy(int spawnIndex, Vector3 spawnPosition)
     {
         PoolableObject poolableObject = enemyObjectPools[spawnIndex].GetObject();
 
         if(poolableObject != null)
         {
             EnemyBase enemy = poolableObject.GetComponent<EnemyBase>();
-            enemies[spawnIndex].SetUpEnemy(enemy);
+            weightedEnemies[spawnIndex].enemy.SetUpEnemy(enemy);
 
-            int vertexIndex = Random.Range(0, triangulation.vertices.Length);
+           
 
             NavMeshHit hit;
-            if (NavMesh.SamplePosition(triangulation.vertices[vertexIndex], out hit, 2f, -1))
+            if (NavMesh.SamplePosition(spawnPosition, out hit, 2f, -1))
             {
                 enemy.agent.Warp(hit.position);
                 enemy.movement.target = player;
@@ -85,7 +134,7 @@ public class EnemySpawner : MonoBehaviour
             }
             else
             {
-                Debug.LogError($"Unable to place NavMeshAgent on NavMesh. Tried to use {triangulation.vertices[vertexIndex]}.");
+                Debug.LogError($"Unable to place NavMeshAgent on NavMesh. Tried to use {spawnPosition}.");
             }
         }
         else
@@ -97,6 +146,7 @@ public class EnemySpawner : MonoBehaviour
     public enum SpawnMethod
     {
         RoundRobin,
-        Random
+        Random,
+        WeightedRandom
     }
 }

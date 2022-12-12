@@ -432,7 +432,7 @@ GameObject:
   - component: {fileID: 7006517545871504409}
   - component: {fileID: 4774598329816539119}
   m_Layer: 0
-  m_Name: SampleEnemyPirate
+  m_Name: SampleEnemyArcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -514,7 +514,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7006517545871504402}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
@@ -549,6 +549,11 @@ MonoBehaviour:
   idleLocationRadius: 4
   idleMoveSpeedMultiplier: 0.5
   waypointIndex: 1
+  waypoints:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
 --- !u!114 &4774598329816539119
 MonoBehaviour:
   m_ObjectHideFlags: 0

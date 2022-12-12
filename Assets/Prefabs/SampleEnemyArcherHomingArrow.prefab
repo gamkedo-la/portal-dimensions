@@ -432,7 +432,7 @@ GameObject:
   - component: {fileID: 7006517545871504409}
   - component: {fileID: 4774598329816539119}
   m_Layer: 0
-  m_Name: SampleEnemyPirateHomingBullet
+  m_Name: SampleEnemyArcherHomingArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

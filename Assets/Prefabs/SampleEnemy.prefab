@@ -331,6 +331,11 @@ MonoBehaviour:
   idleLocationRadius: 4
   idleMoveSpeedMultiplier: 0.5
   waypointIndex: 1
+  waypoints:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
 --- !u!114 &1568003642
 MonoBehaviour:
   m_ObjectHideFlags: 0

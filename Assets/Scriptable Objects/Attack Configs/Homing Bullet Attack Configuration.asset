@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85065719fbec7104999d74b2836a0ca0, type: 3}
-  m_Name: Homing Bullet Attack Congiuration
+  m_Name: Homing Bullet Attack Configuration
   m_EditorClassIdentifier: 
   isRanged: 1
   damage: 1

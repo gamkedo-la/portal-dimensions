@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ObjectPool
 {
+    private GameObject parent;
     private PoolableObject prefab;
     private List<PoolableObject> availableObjects;
     private int size;
@@ -19,20 +20,25 @@ public class ObjectPool
     {
         ObjectPool pool = new ObjectPool(prefab, size);
 
-        GameObject poolObject = new GameObject(prefab.name + " Pool");
-        pool.CreateObjects(poolObject);
+        pool.parent = new GameObject(prefab.name + " Pool");
+        pool.CreateObjects();
 
         return pool;
     }
 
-    private void CreateObjects(GameObject parent)
+    private void CreateObjects()
     {
         for(int i = 0; i <size; i++)
         {
-            PoolableObject poolableObject = GameObject.Instantiate(prefab, Vector3.zero, Quaternion.identity, parent.transform);
-            poolableObject.parent = this;
-            poolableObject.gameObject.SetActive(false);
+            CreateObject();
         }
+    }
+
+    private void CreateObject()
+    {
+        PoolableObject poolableObject = GameObject.Instantiate(prefab, Vector3.zero, Quaternion.identity, parent.transform);
+        poolableObject.parent = this;
+        poolableObject.gameObject.SetActive(false);
     }
 
     public void ReturnObjectToPool(PoolableObject poolableObject)
@@ -42,6 +48,11 @@ public class ObjectPool
 
     public PoolableObject GetObject()
     {
+        if(availableObjects.Count == 0)
+        {
+            CreateObject();
+        }
+
         if(availableObjects.Count > 0)
         {
             PoolableObject instance = availableObjects[0];

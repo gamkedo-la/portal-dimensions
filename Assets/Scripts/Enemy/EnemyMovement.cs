@@ -81,6 +81,8 @@ public class EnemyMovement : MonoBehaviour
     private void OnDisable()
     {
         currentState = defaultState;
+        sightChecker.OnGainSight -= HandleGainSight;
+        sightChecker.OnLoseSight -= HandleLoseSight;
     }
 
     // Update is called once per frame

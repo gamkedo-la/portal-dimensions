@@ -53,7 +53,7 @@ public class Player : HealthBase
             yield return null;
         }
 
-        //transform.rotation = lookRotation;
+        //.rotation = lookRotation;
     }
 
     protected override void Killed(GameObject character)
