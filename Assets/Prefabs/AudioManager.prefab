@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6157056216706273748}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 511.74588, y: 9.312834, z: 508.66257}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -47,6 +47,24 @@ MonoBehaviour:
   sounds:
   - name: PickUpSound
     clip: {fileID: 8300000, guid: 7093229c9b54b5148882fb5a9323546a, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: DogHurt
+    clip: {fileID: 8300000, guid: 4ac03e49e03e2014f88eb4d5dd584d3b, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: DogBark
+    clip: {fileID: 8300000, guid: ea149bac954e3bf41b94f2777c86ae02, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: SwordAttack
+    clip: {fileID: 8300000, guid: 6938341e425cd0f4aa4565bbdb379e06, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0

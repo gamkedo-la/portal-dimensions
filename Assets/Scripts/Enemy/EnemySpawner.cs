@@ -79,8 +79,9 @@ public class EnemySpawner : MonoBehaviour
             {
                 enemy.agent.Warp(hit.position);
                 enemy.movement.target = player;
+                enemy.movement.triangulation = triangulation;
                 enemy.agent.enabled = true;
-                enemy.movement.StartChasing();
+                enemy.movement.Spawn();
             }
             else
             {

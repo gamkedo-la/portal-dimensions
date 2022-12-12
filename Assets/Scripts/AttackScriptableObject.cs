@@ -29,9 +29,9 @@ public class AttackScriptableObject : ScriptableObject
         {
             RangedAttackRadius rangedAttackRadius = enemy.attackRadius.GetComponent<RangedAttackRadius>();
 
-            rangedAttackRadius.BulletPrefab = bulletPrefab;
-            rangedAttackRadius.BulletSpawnOffset = bulletSpawnOffset;
-            rangedAttackRadius.Mask = lineOfSightLayers;
+            rangedAttackRadius.bulletPrefab = bulletPrefab;
+            rangedAttackRadius.bulletSpawnOffset = bulletSpawnOffset;
+            rangedAttackRadius.mask = lineOfSightLayers;
 
             rangedAttackRadius.CreateBulletPool();
         }
