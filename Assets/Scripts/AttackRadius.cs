@@ -19,16 +19,16 @@ public class AttackRadius : MonoBehaviour
     }
     protected virtual void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Triggered by " + other.name);
+        //Debug.Log("Triggered by " + other.name);
         IDamageable damageable = other.GetComponent<IDamageable>();
         if(damageable != null)
         {
-            Debug.Log("AttackRadius OnTriggerEnter()");
+            //Debug.Log("AttackRadius OnTriggerEnter()");
             Damageables.Add(damageable);
 
             if(AttackCoroutine == null)
             {
-                Debug.Log("AttackCorourine == null");
+                //Debug.Log("AttackCorourine == null");
                 AttackCoroutine = StartCoroutine(Attack());
             }
         }
@@ -37,7 +37,7 @@ public class AttackRadius : MonoBehaviour
     protected virtual void OnTriggerExit(Collider other)
     {
         IDamageable damageable = other.GetComponent<IDamageable>();
-        Debug.Log("AttackRadius OnTriggerExit()");
+        //Debug.Log("AttackRadius OnTriggerExit()");
         if (damageable != null)
         {
             Damageables.Remove(damageable);
@@ -51,7 +51,7 @@ public class AttackRadius : MonoBehaviour
 
     protected virtual IEnumerator Attack()
     {
-        Debug.Log("AttackRadius Attack()");
+        //Debug.Log("AttackRadius Attack()");
         WaitForSeconds Wait = new WaitForSeconds(attackDelay);
 
         yield return Wait;

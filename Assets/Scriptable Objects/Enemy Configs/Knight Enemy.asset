@@ -19,8 +19,11 @@ MonoBehaviour:
   idleLocationRadius: 10
   idleMoveSpeedMultiplier: 0.5
   waypoints: 6
-  lineOfSightRange: 7
-  fieldOfView: 90
+  viewAngle: 75
+  radiusOfView: 6
+  cantSeeLayers:
+    serializedVersion: 2
+    m_Bits: 8063
   aiUpdateInterval: 0.1
   acceleration: 8
   angularSpeed: 120

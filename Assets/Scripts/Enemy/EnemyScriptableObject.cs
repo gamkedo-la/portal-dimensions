@@ -18,8 +18,10 @@ public class EnemyScriptableObject : ScriptableObject
     public float idleMoveSpeedMultiplier = 0.5f;
     [Range(2, 10)]
     public int waypoints = 4;
-    public float lineOfSightRange = 6f;
-    public float fieldOfView = 90f;
+    [Range(0, 360)]
+    public float viewAngle;
+    public float radiusOfView;
+    public LayerMask cantSeeLayers;
 
     //NavMeshAgent Configs
     public float aiUpdateInterval = 0.1f;
@@ -54,9 +56,10 @@ public class EnemyScriptableObject : ScriptableObject
         enemy.movement.idleMoveSpeedMultiplier = idleMoveSpeedMultiplier;
         enemy.movement.idleLocationRadius = idleLocationRadius;
         enemy.movement.waypoints = new Vector3[waypoints];
-        enemy.movement.sightChecker.fieldOfView = fieldOfView;
-        enemy.movement.sightChecker.sphereCollider.radius = lineOfSightRange;
-        enemy.movement.sightChecker.lineOfSightLayers = attackConfiguration.lineOfSightLayers;
+        enemy.movement.enemyFieldOfView.viewAngle = viewAngle;
+        enemy.movement.enemyFieldOfView.radius = radiusOfView;
+        enemy.movement.enemyFieldOfView.targetMask = attackConfiguration.lineOfSightLayers;
+        enemy.movement.enemyFieldOfView.obstacleMask = cantSeeLayers;
 
         enemy.health.healthMax = health;
 

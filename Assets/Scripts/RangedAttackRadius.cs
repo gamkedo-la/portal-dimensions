@@ -38,14 +38,14 @@ public class RangedAttackRadius : AttackRadius
                     targetDamageable = Damageables[i];
                     OnAttack?.Invoke(Damageables[i]);
                     agent.enabled = false;
-                    Debug.Log("target damageable: " + targetDamageable);
+                    //Debug.Log("target damageable: " + targetDamageable);
                     break;
                 }
             }
 
             if (targetDamageable != null)
             {
-                Debug.Log("target damageable: " + targetDamageable);
+                //Debug.Log("target damageable: " + targetDamageable);
                 PoolableObject poolableObject = bulletPool.GetObject();
                 if (poolableObject != null)
                 {
@@ -78,9 +78,9 @@ public class RangedAttackRadius : AttackRadius
 
     private bool HasLineOfSightTo(Transform Target)
     {
-        Debug.Log(transform.position + bulletSpawnOffset);
-        Debug.Log(((Target.position + bulletSpawnOffset) - (transform.position + bulletSpawnOffset)).normalized);
-        Debug.Log(mask.ToString());
+        //Debug.Log(transform.position + bulletSpawnOffset);
+        //Debug.Log(((Target.position + bulletSpawnOffset) - (transform.position + bulletSpawnOffset)).normalized);
+        //Debug.Log(mask.ToString());
         if (Physics.SphereCast(transform.position + bulletSpawnOffset, spherecastRadius, ((Target.position + bulletSpawnOffset) - (transform.position + bulletSpawnOffset)).normalized, out hit, sphereCollider.radius, mask))
         {
             Debug.Log("Has line of sight");

@@ -7,7 +7,8 @@ using UnityEngine.AI;
 public class EnemyMovement : MonoBehaviour
 {
     public Transform target;
-    public EnemyLineOfSightChecker sightChecker;
+    //public EnemyLineOfSightChecker sightChecker;
+    public EnemyFieldOfView enemyFieldOfView;
     public float updateSpeed = 0.1f;
 
     private NavMeshAgent agent;
@@ -45,25 +46,39 @@ public class EnemyMovement : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
 
-        sightChecker.OnGainSight += HandleGainSight;
-        sightChecker.OnLoseSight += HandleLoseSight;
+        //sightChecker.OnGainSight += HandleGainSight;
+        //sightChecker.OnLoseSight += HandleLoseSight;
 
-        OnStateChange += HandleStateChange;
     }
-    
+
+    private void OnEnable()
+    {
+        enemyFieldOfView.OnGainSight += HandleGainSight;
+        enemyFieldOfView.OnLoseSight += HandleLoseSight;
+
+        OnStateChange += HandleStateChange;        
+    }
+
     private void HandleGainSight(Player player)
     {
+        Debug.Log("Handle Gain Sight");
+        EnemyState oldState = State;
         State = EnemyState.Chase;
+        OnStateChange?.Invoke(oldState, State);
     }
 
     private void HandleLoseSight(Player player)
     {
+        Debug.Log("Handle Lose Sight");
+        EnemyState oldState = State;
         State = defaultState;
+        OnStateChange?.Invoke(oldState, State);
     }
 
     public void Spawn()
     {
-        for(int i = 0; i < waypoints.Length; i++)
+        Debug.Log("Spawn");
+        for (int i = 0; i < waypoints.Length; i++)
         {
             NavMeshHit hit;
             if(NavMesh.SamplePosition(triangulation.vertices[Random.Range(0, triangulation.vertices.Length)], out hit, 2f, agent.areaMask))
@@ -81,19 +96,17 @@ public class EnemyMovement : MonoBehaviour
     private void OnDisable()
     {
         currentState = defaultState;
-        sightChecker.OnGainSight -= HandleGainSight;
-        sightChecker.OnLoseSight -= HandleLoseSight;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //sightChecker.OnGainSight -= HandleGainSight;
+        //sightChecker.OnLoseSight -= HandleLoseSight;
+        enemyFieldOfView.OnGainSight -= HandleGainSight;
+        enemyFieldOfView.OnLoseSight -= HandleLoseSight;
+        //OnStateChange -= HandleStateChange;
     }
 
     private void HandleStateChange(EnemyState oldState, EnemyState newState)
     {
-        if(oldState != newState)
+        Debug.Log("Handle State Change");
+        if (oldState != newState)
         {
             if(FollowCoroutine != null)
             {
@@ -123,6 +136,7 @@ public class EnemyMovement : MonoBehaviour
 
     private IEnumerator DoIdleMotion()
     {
+        Debug.Log("Do idle motion");
         WaitForSeconds wait = new WaitForSeconds(updateSpeed);
 
         agent.speed *= idleMoveSpeedMultiplier;
@@ -143,13 +157,13 @@ public class EnemyMovement : MonoBehaviour
                     agent.SetDestination(hit.position);
                 }
             }
-
             yield return wait;
         }
     }
 
     private IEnumerator DoPatrolMotion()
     {
+        Debug.Log("Do patrol motion");
         WaitForSeconds wait = new WaitForSeconds(updateSpeed);
 
         yield return new WaitUntil(() => agent.enabled && agent.isOnNavMesh);
@@ -174,6 +188,7 @@ public class EnemyMovement : MonoBehaviour
 
     private IEnumerator FollowTarget()
     {
+        Debug.Log("Do follow target motion");
         WaitForSeconds wait = new WaitForSeconds(updateSpeed);
 
         while (enabled)
@@ -189,8 +204,6 @@ public class EnemyMovement : MonoBehaviour
                 agent.isStopped = false;
                 agent.SetDestination(target.transform.position);
             }
-
-
             yield return wait;
         }
     }
