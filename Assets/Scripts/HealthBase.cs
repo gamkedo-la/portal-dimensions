@@ -45,8 +45,9 @@ public class HealthBase : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damageAmount)
     {
+        Debug.Log(damageAmount);
         health -= damageAmount;
-        OnHealthChanged?.Invoke(character);
+        //OnHealthChanged?.Invoke(character);
         if (health < 0)
             health = 0;
         OnHealthChanged?.Invoke(character);

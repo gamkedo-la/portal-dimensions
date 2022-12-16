@@ -15,7 +15,7 @@ MonoBehaviour:
   isRanged: 0
   damage: 5
   attackRadius: 1.5
-  attackDelay: 0
+  attackDelay: 1
   attackSound: 
   hurtSound: 
   killedSound: 

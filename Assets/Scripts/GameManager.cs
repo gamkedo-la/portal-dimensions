@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
                 itemText[i].text = item[i].amount.ToString();
             }
         }
-        healthText.text = player.GetHealth().ToString();
+        healthText.text = player.healthMax.ToString();
     }
 
     void UpdateHealth(GameObject character)

@@ -61,7 +61,7 @@ public class AttackRadius : MonoBehaviour
 
         while(Damageables.Count > 0)
         {
-            for(int i =0; i < Damageables.Count; i++)
+            for(int i = 0; i < Damageables.Count; i++)
             {
                 Transform damageableTransform = Damageables[i].GetTransform();
                 float distance = Vector3.Distance(transform.position, damageableTransform.position);
