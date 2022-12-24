@@ -27,4 +27,12 @@ public class Portal : MonoBehaviour
             SceneManager.LoadScene(level);
         }
     }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            SceneManager.LoadScene(level);
+        }
+    }
 }

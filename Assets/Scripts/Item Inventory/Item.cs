@@ -18,8 +18,8 @@ public class Item : MonoBehaviour
 
     private void OnEnable()
     {
-        if(GetComponent<MeshRenderer>() != null)
-            GetComponent<MeshRenderer>().material.color = itemType.itemColor;
+        //(GetComponent<MeshRenderer>() != null)
+          //  GetComponent<MeshRenderer>().material.color = itemType.itemColor;
     }
 
     private void Start()

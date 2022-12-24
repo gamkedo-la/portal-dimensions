@@ -55,6 +55,7 @@ public class EnemyBurstSpawnArea : MonoBehaviour
 
         for(int i = 0; i < spawnCount; i++)
         {
+            Debug.Log("Spawn enemy");
             if(spawnMethod == EnemySpawner.SpawnMethod.RoundRobin)
             {
                 enemySpawner.DoSpawnEnemy(

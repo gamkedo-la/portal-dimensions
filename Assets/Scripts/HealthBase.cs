@@ -6,8 +6,8 @@ public class HealthBase : MonoBehaviour, IDamageable
 {
     //public static event Action<GameObject> OnKilled;
     public static event Action<GameObject> OnHealthChanged;
-    private int health;
-    [SerializeField] public int healthMax;
+    public float health;
+    [SerializeField] public float healthMax;
     private GameObject character;
     public AttackScriptableObject attacker;
 
@@ -38,7 +38,7 @@ public class HealthBase : MonoBehaviour, IDamageable
         //healSound = attacker.healSound;
     }
 
-    public int GetHealth()
+    public float GetHealth()
     {
         return health;  
     }
@@ -58,7 +58,7 @@ public class HealthBase : MonoBehaviour, IDamageable
         }
     }
 
-    public void Heal(int healAmount)
+    public void Heal(float healAmount)
     {
         health += healAmount;
         if (health > healthMax)

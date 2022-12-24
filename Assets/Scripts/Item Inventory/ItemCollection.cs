@@ -26,11 +26,15 @@ public class ItemCollection : ScriptableObject
 
     public void Add(Item item)
     {
-        if(item.gameObject.tag != "Powerup")
+        if(item.gameObject.tag != "Powerup" && item.gameObject.tag != "Health")
         {
             itemsCollected.Add(item.ItemType);
             amount += worth;
             Changed?.Invoke();
+        }
+        else if(item.gameObject.tag == "Health")
+        {
+
         }
         else
         {

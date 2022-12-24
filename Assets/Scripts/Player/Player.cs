@@ -56,6 +56,11 @@ public class Player : HealthBase
         //.rotation = lookRotation;
     }
 
+    private void UpdateVignette()
+    {
+        //Vignette
+    }
+
     protected override void Killed(GameObject character)
     {
         base.Killed(character);
