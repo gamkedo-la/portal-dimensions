@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Player : HealthBase
 {
-    [SerializeField] AttackRadius attackRadius;
+    [SerializeField] public AttackRadius attackRadius;
     private Coroutine LookCoroutine;
 
     public string attackSound;

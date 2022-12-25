@@ -13,10 +13,26 @@ public class AttackScriptableObject : ScriptableObject
     public string killedSound;
     public string healSound;
 
+    [SerializeField] bool isEnemy = false;
+
     //ranged configs for sky pirates
     public Bullet bulletPrefab;
     public Vector3 bulletSpawnOffset = new Vector3(0, 1, 0);
     public LayerMask lineOfSightLayers;
+
+    public void Attacker(IDamageable character)
+    {
+        if(isEnemy)
+        {
+            EnemyBase enemy = character as EnemyBase;
+            SetUpEnemy(enemy);
+        }
+        else
+        {
+            Player player = character as Player;
+            SetUpPlayer(player);
+        }
+    }
 
     public void SetUpEnemy(EnemyBase enemy)
     {
@@ -36,4 +52,14 @@ public class AttackScriptableObject : ScriptableObject
             rangedAttackRadius.CreateBulletPool();
         }
     }
+
+    public void SetUpPlayer(Player player)
+    {
+        (player.attackRadius.sphereCollider == null ? player.attackRadius.GetComponent<SphereCollider>() :
+            player.attackRadius.sphereCollider).radius = attackRadius;
+        player.attackRadius.attackDelay = attackDelay;
+        player.attackRadius.damage = damage;
+    }
+
+    
 }

@@ -63,6 +63,6 @@ public class EnemyScriptableObject : ScriptableObject
 
         enemy.health.healthMax = health;
 
-        attackConfiguration.SetUpEnemy(enemy);
+        attackConfiguration.Attacker(enemy);
     }
 }

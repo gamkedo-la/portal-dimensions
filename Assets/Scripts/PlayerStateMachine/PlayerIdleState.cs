@@ -27,7 +27,18 @@ public class PlayerIdleState : PlayerBaseState
 
     public override void CheckSwitchStates()
     {
-        
+        if (Input.GetButtonDown("Jump") && Ctx.IsGrounded)
+        {
+            SwitchState(Factory.Jump());
+        }
+        else if (Input.GetButtonDown("Vertical") || Input.GetButtonDown("Horizontal"))
+        {
+            SwitchState(Factory.Walk());
+        }
+        else
+        {
+            SwitchState(Factory.Idle());
+        }
     }
 
     public override void InitializeSubState()

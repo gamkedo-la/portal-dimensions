@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isRanged: 0
   damage: 5
-  attackRadius: 1.5
+  attackRadius: 3
   attackDelay: 1
   attackSound: 
   hurtSound: 
   killedSound: 
   healSound: 
+  isEnemy: 1
   bulletPrefab: {fileID: 0}
   bulletSpawnOffset: {x: 0, y: 1, z: 0}
   lineOfSightLayers:

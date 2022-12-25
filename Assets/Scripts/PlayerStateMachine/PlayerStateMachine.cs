@@ -28,6 +28,11 @@ public class PlayerStateMachine : MonoBehaviour
     bool isRunning = false;
     bool isJumping = false;
     bool isMoving = false;
+
+    //Attacking
+    //bool isAttacking = false;
+
+    //Running
     bool runBoostActive = false;
 
     CameraController cameraController;
@@ -53,6 +58,7 @@ public class PlayerStateMachine : MonoBehaviour
     public bool IsJumping { get { return isJumping; } set { isJumping = value; } }
     public bool IsMoving { get { return isMoving; } set { isMoving = value; } }
     public bool IsRunning { get { return isRunning; } set { isRunning = value; } }
+    //public bool IsAttacking { get { return isAttacking; } set { isAttacking = value; } }
 
     private void Awake()
     {

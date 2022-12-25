@@ -20,6 +20,7 @@ MonoBehaviour:
   hurtSound: 
   killedSound: 
   healSound: 
+  isEnemy: 1
   bulletPrefab: {fileID: 2440199444222628826, guid: f0289abd2db384748b3f781583e4d028, type: 3}
   bulletSpawnOffset: {x: 0, y: 1, z: 0}
   lineOfSightLayers:
