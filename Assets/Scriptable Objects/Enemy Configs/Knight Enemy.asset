@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9a350307c484cd439099080d43f6ae0, type: 3}
   m_Name: Knight Enemy
   m_EditorClassIdentifier: 
-  prefab: {fileID: 235273752032763510, guid: bd39ddce7da63b64dba4434195ecfa10, type: 3}
+  prefab: {fileID: 4020947412656389627, guid: 396e8ac53334644499db3f9409e7e6aa, type: 3}
   attackConfiguration: {fileID: 11400000, guid: 59fa925ad4c656e4c9f5a7f00ffa3452, type: 2}
   health: 100
   defaultState: 2
@@ -20,7 +20,7 @@ MonoBehaviour:
   idleMoveSpeedMultiplier: 0.5
   waypoints: 6
   viewAngle: 75
-  radiusOfView: 20
+  radiusOfView: 30
   cantSeeLayers:
     serializedVersion: 2
     m_Bits: 8063
@@ -33,5 +33,5 @@ MonoBehaviour:
   height: 2
   obstacleAvoidanceType: 1
   radius: 0.5
-  speed: 3
+  speed: 5
   stoppingDistance: 3

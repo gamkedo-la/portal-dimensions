@@ -24,7 +24,10 @@ public abstract class EnemyBase : PoolableObject, IDamageable
     float turnSmoothVelocity;
 
     protected AudioManager audioManager;
-    public string attackSound;
+    [HideInInspector] public string attackSound;
+    [HideInInspector] public string hurtSound;
+    [HideInInspector] public string killedSound;
+    [HideInInspector] public string healSound;
 
     private void Awake()
     {
@@ -59,7 +62,7 @@ public abstract class EnemyBase : PoolableObject, IDamageable
     private void OnAttack(IDamageable target)
     {
         //place animation here
-        Debug.Log("Attacking!");
+        //Debug.Log("Attacking!");
         audioManager.Play(attackSound);
         if (LookCoroutine != null)
         {
@@ -92,7 +95,7 @@ public abstract class EnemyBase : PoolableObject, IDamageable
 
     public virtual void TakeDamage(int damage)
     {
-        Debug.Log(gameObject.name + " is taking damage");
+        //Debug.Log(gameObject.name + " is taking damage");
     }
 
     public Transform GetTransform()

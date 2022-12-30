@@ -23,6 +23,7 @@ public class PlayerWalkState : PlayerBaseState
 
     public override void UpdateState()
     {
+        //Debug.Log("UpdateState PlayerWalkState");
         Move(Ctx.WalkingSpeed);
         CheckSwitchStates();
     }
@@ -70,6 +71,7 @@ public class PlayerWalkState : PlayerBaseState
 
             Vector3 moveDir = Ctx.CameraController.PlanarRotation * direction;//Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             Ctx.Controller.Move(moveDir.normalized * currentSpeed * Time.deltaTime);
+            Debug.Log(currentSpeed);
         }
     }
 }

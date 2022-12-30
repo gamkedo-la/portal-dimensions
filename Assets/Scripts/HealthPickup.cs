@@ -8,7 +8,11 @@ public class HealthPickup : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        other.gameObject.GetComponent<Player>().Heal(healthBonus);
-        Destroy(gameObject);
+        if (other.gameObject.tag == "Player")
+        {
+            other.gameObject.GetComponent<Player>().Heal(healthBonus);
+            Destroy(gameObject);
+        }
+
     }
 }

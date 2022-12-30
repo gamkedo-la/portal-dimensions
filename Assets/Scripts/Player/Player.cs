@@ -8,9 +8,6 @@ public class Player : HealthBase
     [SerializeField] public AttackRadius attackRadius;
     private Coroutine LookCoroutine;
 
-    public string attackSound;
-
-
 
     private void OnEnable()
     {
@@ -28,12 +25,14 @@ public class Player : HealthBase
         //place attack sound here
         //audioManager.Play(attackSound);
 
+        /*
         if (LookCoroutine != null)
         {
             StopCoroutine(LookCoroutine);
         }
 
         LookCoroutine = StartCoroutine(LookAt(target.GetTransform()));
+        */
     }
 
     private IEnumerator LookAt(Transform target)

@@ -80,7 +80,6 @@ public class PlayerStateMachine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(currentState);
         currentState.UpdateStates();
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);

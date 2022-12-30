@@ -54,7 +54,7 @@ public class EnemyFieldOfView : MonoBehaviour
 
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstacleMask))
                 {
-                    Debug.Log("Can see player!!!");
+                    //Debug.Log("Can see player!!!");
                     canSeePlayer = true;
                     player = target;
                     OnGainSight?.Invoke(target.gameObject.GetComponent<Player>());

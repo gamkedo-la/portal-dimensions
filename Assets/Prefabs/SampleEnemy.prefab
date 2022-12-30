@@ -350,6 +350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81f473fee838ac34b8c234a28306f0d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
   healthMax: 100
   attacker: {fileID: 11400000, guid: 59fa925ad4c656e4c9f5a7f00ffa3452, type: 2}
   hurtSound: 

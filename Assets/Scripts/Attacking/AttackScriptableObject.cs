@@ -40,6 +40,10 @@ public class AttackScriptableObject : ScriptableObject
             enemy.attackRadius.sphereCollider).radius = attackRadius;
         enemy.attackRadius.attackDelay = attackDelay;
         enemy.attackRadius.damage = damage;
+        enemy.attackSound = attackSound;
+        enemy.hurtSound = hurtSound;
+        enemy.killedSound = killedSound;
+        enemy.healSound = healSound;
 
         if(isRanged)
         {
@@ -59,6 +63,10 @@ public class AttackScriptableObject : ScriptableObject
             player.attackRadius.sphereCollider).radius = attackRadius;
         player.attackRadius.attackDelay = attackDelay;
         player.attackRadius.damage = damage;
+        player.attackSound = attackSound;
+        player.hurtSound = hurtSound;
+        player.killedSound = killedSound;
+        player.healSound = healSound;
     }
 
     

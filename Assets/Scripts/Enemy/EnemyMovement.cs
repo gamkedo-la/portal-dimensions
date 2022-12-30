@@ -19,7 +19,7 @@ public class EnemyMovement : MonoBehaviour
     private Coroutine FollowCoroutine;
 
     public EnemyState defaultState;
-    private EnemyState currentState;
+    public EnemyState currentState;
 
     public EnemyState State 
     { 
@@ -61,15 +61,18 @@ public class EnemyMovement : MonoBehaviour
 
     private void HandleGainSight(Player player)
     {
-        Debug.Log("Handle Gain Sight");
+        //Debug.Log("Handle Gain Sight");
+        //Debug.Log("Current State: " + State);
         EnemyState oldState = State;
+        //Debug.Log("Old State: " + oldState);
         State = EnemyState.Chase;
+        //Debug.Log("New State: " + State);
         OnStateChange?.Invoke(oldState, State);
     }
 
     private void HandleLoseSight(Player player)
     {
-        Debug.Log("Handle Lose Sight");
+        //Debug.Log("Handle Lose Sight");
         EnemyState oldState = State;
         State = defaultState;
         OnStateChange?.Invoke(oldState, State);
@@ -77,7 +80,7 @@ public class EnemyMovement : MonoBehaviour
 
     public void Spawn()
     {
-        Debug.Log("Spawn");
+        //Debug.Log("Spawn");
         for (int i = 0; i < waypoints.Length; i++)
         {
             NavMeshHit hit;
@@ -105,7 +108,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void HandleStateChange(EnemyState oldState, EnemyState newState)
     {
-        Debug.Log("Handle State Change");
+        //Debug.Log("Handle State Change");
         if (oldState != newState)
         {
             if(FollowCoroutine != null)
@@ -115,7 +118,9 @@ public class EnemyMovement : MonoBehaviour
 
             if(oldState == EnemyState.Idle)
             {
+                //Debug.Log("Before: " + agent.speed);
                 agent.speed /= idleMoveSpeedMultiplier;
+                //Debug.Log("After: " + agent.speed);
             }
 
             switch (newState)
@@ -136,7 +141,7 @@ public class EnemyMovement : MonoBehaviour
 
     private IEnumerator DoIdleMotion()
     {
-        Debug.Log("Do idle motion");
+        //Debug.Log("Do idle motion");
         WaitForSeconds wait = new WaitForSeconds(updateSpeed);
 
         agent.speed *= idleMoveSpeedMultiplier;
@@ -163,7 +168,7 @@ public class EnemyMovement : MonoBehaviour
 
     private IEnumerator DoPatrolMotion()
     {
-        Debug.Log("Do patrol motion");
+        //Debug.Log("Do patrol motion");
         WaitForSeconds wait = new WaitForSeconds(updateSpeed);
 
         yield return new WaitUntil(() => agent.enabled && agent.isOnNavMesh);
@@ -188,7 +193,7 @@ public class EnemyMovement : MonoBehaviour
 
     private IEnumerator FollowTarget()
     {
-        Debug.Log("Do follow target motion");
+        //Debug.Log("Do follow target motion");
         WaitForSeconds wait = new WaitForSeconds(updateSpeed);
 
         while (enabled)

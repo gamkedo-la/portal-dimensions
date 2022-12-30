@@ -53,6 +53,7 @@ public class EnemyScriptableObject : ScriptableObject
 
         enemy.movement.updateSpeed = aiUpdateInterval;
         enemy.movement.defaultState = defaultState;
+        enemy.movement.currentState = defaultState;
         enemy.movement.idleMoveSpeedMultiplier = idleMoveSpeedMultiplier;
         enemy.movement.idleLocationRadius = idleLocationRadius;
         enemy.movement.waypoints = new Vector3[waypoints];

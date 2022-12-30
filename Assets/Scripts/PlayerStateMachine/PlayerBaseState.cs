@@ -30,10 +30,11 @@ public abstract class PlayerBaseState
 
     public void UpdateStates() 
     {
+        Debug.Log("UpdateStates PlayerBaseState");
         UpdateState();
         if(currentSubState != null)
         {
-            currentSubState.UpdateStates();
+            //currentSubState.UpdateStates();
         }
     }
 

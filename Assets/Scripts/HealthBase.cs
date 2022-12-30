@@ -12,9 +12,10 @@ public class HealthBase : MonoBehaviour, IDamageable
     public AttackScriptableObject attacker;
 
     protected AudioManager audioManager;
-    public string hurtSound;
-    public string killedSound;
-    public string healSound;
+    [HideInInspector] public string attackSound;
+    [HideInInspector] public string hurtSound;
+    [HideInInspector] public string killedSound;
+    [HideInInspector] public string healSound;
 
     /*
     public HealthBase(int healthMax, GameObject character)
@@ -45,7 +46,7 @@ public class HealthBase : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damageAmount)
     {
-        Debug.Log(damageAmount);
+        //Debug.Log(damageAmount);
         health -= damageAmount;
         //OnHealthChanged?.Invoke(character);
         if (health < 0)
