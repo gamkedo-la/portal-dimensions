@@ -71,8 +71,8 @@ public class PlayerStateMachine : MonoBehaviour
     void Start()
     {
         walkingSpeed = speed;
-        runningSpeed = speed * 1.5f;
-        runBoostSpeed = speed * 2.2f;
+        runningSpeed = speed * 2.0f;
+        runBoostSpeed = speed * 3.0f;
 
         cameraController = Camera.main.GetComponent<CameraController>();
     }
@@ -89,6 +89,19 @@ public class PlayerStateMachine : MonoBehaviour
             velocity.y = -2f;
         }
         //Move(walkingSpeed);
+    }
+
+    public void SetIsRunning(bool running)
+    {
+        isRunning = running;
+        if(isRunning)
+        {
+            walkingSpeed = runningSpeed;
+        }
+        else
+        {
+            walkingSpeed = speed;
+        }
     }
     
     private void Move(float currentSpeed)

@@ -6,21 +6,15 @@ public class PlayerAttacking : MonoBehaviour
 {
     IDamageable damageable;
     [SerializeField] public float range;
-    [SerializeField] public ParticleSystem barkParticles;
-    [SerializeField] public AttackRadius attackRadius;
+    [SerializeField] ParticleSystem barkParticles;
     [HideInInspector] public bool isAttacking;
     private AudioManager audioManager;
     public string attackSound;
-
+    PlayerStateMachine playerState;
 
     private void OnEnable()
     {
-        attackRadius.OnAttack += OnAttack;
-    }
-
-    private void OnDisable()
-    {
-        attackRadius.OnAttack -= OnAttack;
+        playerState = GetComponent<PlayerStateMachine>();    
     }
 
     private void Start()
@@ -35,16 +29,40 @@ public class PlayerAttacking : MonoBehaviour
         //OnAttack(damageable);
         
     }
-    private void OnAttack(IDamageable target)
+
+    private void Update()
     {
-        Debug.Log("Attacking" + target);
-        if(Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            //place animation here
-            audioManager.Play(attackSound);
-            barkParticles.Play(true);
+            Running();
+        }
+        if(Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            StopRunning();
+        }
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            Bark();
         }
     }
+
+    private void Running()
+    {
+        playerState.SetIsRunning(true);
+    }
+
+    private void StopRunning()
+    {
+        playerState.SetIsRunning(false);
+    }
+
+    private void Bark()
+    {
+        //place animation here
+        audioManager.Play(attackSound);
+        barkParticles.Play(true);
+    }
+
 
     public bool GetIsAttacking()
     {
