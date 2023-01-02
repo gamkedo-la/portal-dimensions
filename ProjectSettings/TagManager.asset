@@ -4,9 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Egg
-  - Coin
-  - Powerup
+  - Gears
   layers:
   - Default
   - TransparentFX

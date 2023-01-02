@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50c2b5b3839372b4fb6b24106838b203, type: 3}
-  m_Name: Egg Collection
+  m_Name: Gear Collection
   m_EditorClassIdentifier: 
-  itemName: 
+  itemName: NutsNBolts
   amount: 0
   worth: 1
-  artwork: {fileID: 0}
+  pickUpSound: {fileID: 11400000, guid: 4ac5ac733d2b20e409f55a4359fc328e, type: 2}
+  soundName: 

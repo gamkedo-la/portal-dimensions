@@ -38,7 +38,7 @@ public class Item : MonoBehaviour
             Player player = other.GetComponent<Player>();
             if(player != null)
             {
-                collection.Add(gameObject.GetComponent<Item>());
+                //collection.Add(gameObject.GetComponent<Item>());
             }
             //pickUpSound.Play(2.5f);
             audioManager.Play(soundName);

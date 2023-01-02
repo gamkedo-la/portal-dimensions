@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1d343ce677ebc945b26cfc8f24b5c87, type: 3}
-  m_Name: Egg
+  m_Name: NutsNBolts
   m_EditorClassIdentifier: 
-  itemColor: {r: 0.53940105, g: 0, b: 1, a: 1}
+  itemColor: {r: 1, g: 0.62809366, b: 0, a: 1}

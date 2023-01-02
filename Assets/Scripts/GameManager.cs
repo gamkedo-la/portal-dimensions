@@ -8,28 +8,23 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] List<ItemCollection> item;
-    [SerializeField] List<TMP_Text> itemText;
     [SerializeField] TMP_Text healthText;
+    [SerializeField] TMP_Text gearText;
     [SerializeField] Player player;
+    [SerializeField] ItemCollection gearCollection;
     //private HealthBase playerHealth;
 
     private void OnEnable()
     {
-        for(int i = 0; i < item.Count; i++)
-        {
-            item[i].Changed += DisplayHUB;
-        }
+        gearCollection.amount = 0;
         HealthBase.OnHealthChanged += UpdateHealth;
+        Gears.Changed += UpdateGears;
     }
 
     private void OnDisable()
     {
-        for (int i = 0; i < item.Count; i++)
-        {
-            item[i].Changed -= DisplayHUB;
-        }
         HealthBase.OnHealthChanged -= UpdateHealth;
+        Gears.Changed -= UpdateGears;
     }
 
     // Start is called before the first frame update
@@ -61,18 +56,17 @@ public class GameManager : MonoBehaviour
 
     void DisplayHUB()
     {
-        if(item != null)
-        {
-            for(int i = 0; i < item.Count; i++)
-            {
-                itemText[i].text = item[i].amount.ToString();
-            }
-        }
         healthText.text = player.healthMax.ToString();
+        gearText.text = gearCollection.amount.ToString();
     }
 
     void UpdateHealth(GameObject character)
     {
         healthText.text = player.GetHealth().ToString();
+    }
+
+    void UpdateGears()
+    {
+        gearText.text = gearCollection.amount.ToString();
     }
 }

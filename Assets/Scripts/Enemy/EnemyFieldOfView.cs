@@ -62,13 +62,13 @@ public class EnemyFieldOfView : MonoBehaviour
                 else
                 {
                     canSeePlayer = false;
-                    //OnLoseSight?.Invoke(target.GetComponent<Player>());
+                    OnLoseSight?.Invoke(target.GetComponent<Player>());
                 }
             }
             else
             {
                 canSeePlayer = false;
-                //OnLoseSight?.Invoke(target.GetComponent<Player>());
+                OnLoseSight?.Invoke(target.GetComponent<Player>());
             }
         }
         else if (canSeePlayer)

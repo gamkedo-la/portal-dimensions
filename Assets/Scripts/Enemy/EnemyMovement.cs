@@ -72,7 +72,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void HandleLoseSight(Player player)
     {
-        //Debug.Log("Handle Lose Sight");
+        Debug.Log("Handle Lose Sight");
         EnemyState oldState = State;
         State = defaultState;
         OnStateChange?.Invoke(oldState, State);
