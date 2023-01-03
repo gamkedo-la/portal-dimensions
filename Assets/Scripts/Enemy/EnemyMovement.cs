@@ -45,10 +45,6 @@ public class EnemyMovement : MonoBehaviour
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-
-        //sightChecker.OnGainSight += HandleGainSight;
-        //sightChecker.OnLoseSight += HandleLoseSight;
-
     }
 
     private void OnEnable()
@@ -72,7 +68,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void HandleLoseSight(Player player)
     {
-        Debug.Log("Handle Lose Sight");
+        //Debug.Log("Handle Lose Sight");
         EnemyState oldState = State;
         State = defaultState;
         OnStateChange?.Invoke(oldState, State);
@@ -93,6 +89,9 @@ public class EnemyMovement : MonoBehaviour
                 Debug.LogError($"Unable to find position for navmesh near triangulation vertex!");
             }
         }
+
+        defaultState = (EnemyState)Random.Range(1, 3);
+        //Debug.Log(defaultState);
         OnStateChange?.Invoke(EnemyState.Spawn, defaultState);
     }
 

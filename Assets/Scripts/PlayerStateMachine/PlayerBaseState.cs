@@ -30,7 +30,7 @@ public abstract class PlayerBaseState
 
     public void UpdateStates() 
     {
-        Debug.Log("UpdateStates PlayerBaseState");
+        //Debug.Log("UpdateStates PlayerBaseState");
         UpdateState();
         if(currentSubState != null)
         {

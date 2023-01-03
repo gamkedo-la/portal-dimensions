@@ -46,7 +46,7 @@ public class HealthBase : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damageAmount)
     {
-        //Debug.Log(damageAmount);
+        Debug.Log(gameObject.name + " " + damageAmount);
         health -= damageAmount;
         //OnHealthChanged?.Invoke(character);
         if (health < 0)

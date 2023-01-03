@@ -29,7 +29,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 76c987beff3e68045b30b79ed5befbfd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 76c987beff3e68045b30b79ed5befbfd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -133,7 +133,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 76c987beff3e68045b30b79ed5befbfd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 76c987beff3e68045b30b79ed5befbfd, type: 3}
+      propertyPath: m_TagString
+      value: Gears
       objectReference: {fileID: 0}
     - target: {fileID: 8559827376482004830, guid: 76c987beff3e68045b30b79ed5befbfd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -257,3 +261,29 @@ MonoBehaviour:
   bounceSpeed: 1
   bounceAmplitude: 0.05
   rotationSpeed: 20
+--- !u!135 &1346444253
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8724638165783444494}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1346444251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8724638165783444494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b5a5f399f97c2a4b94c4e2253a75605, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gear: {fileID: 11400000, guid: 1030f6c815b576046a304b0907931f0f, type: 2}
