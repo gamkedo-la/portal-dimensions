@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 4020947412656389627, guid: 396e8ac53334644499db3f9409e7e6aa, type: 3}
   attackConfiguration: {fileID: 11400000, guid: 59fa925ad4c656e4c9f5a7f00ffa3452, type: 2}
-  health: 100
+  health: 5
   defaultState: 2
   idleLocationRadius: 10
   idleMoveSpeedMultiplier: 0.5

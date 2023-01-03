@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerAttacking : MonoBehaviour
 {
-    IDamageable damageable;
     [SerializeField] public float range;
     [SerializeField] ParticleSystem barkParticles;
     [SerializeField] float shootDelay = 0.5f;
@@ -13,8 +12,10 @@ public class PlayerAttacking : MonoBehaviour
     [HideInInspector] public bool isAttacking;
     [SerializeField] public string attackSound;
     [SerializeField] public Transform spawnPoint;
-    [SerializeField] public float hitAngle = 30f; 
+    [SerializeField] public float hitAngle = 30f;
+    [SerializeField] public AttackRadius attackRadius;
 
+    private bool isRunning;
     private float lastShootTime;
 
     private AudioManager audioManager;
@@ -23,7 +24,14 @@ public class PlayerAttacking : MonoBehaviour
 
     private void OnEnable()
     {
-        playerState = GetComponent<PlayerStateMachine>();    
+        attackRadius.AttackEnemy += OnChargeHit;
+        playerState = GetComponent<PlayerStateMachine>();
+        isRunning = false;
+    }
+
+    private void OnDisable()
+    {
+        attackRadius.AttackEnemy -= OnChargeHit;
     }
 
     private void Start()
@@ -57,12 +65,25 @@ public class PlayerAttacking : MonoBehaviour
 
     private void Running()
     {
+        isRunning = true;
         playerState.SetIsRunning(true);
     }
 
     private void StopRunning()
     {
+        isRunning = false;
         playerState.SetIsRunning(false);
+    }
+
+    private void OnChargeHit(IDamageable enemy)
+    {
+        Debug.Log("collided");
+        if(enemy.GetTransform().gameObject.tag == "Enemy" && isRunning)
+        {
+            EnemyHealth enemyHealth = enemy.GetTransform().transform.GetComponent<EnemyHealth>();
+            HealthBase player = gameObject.GetComponent<HealthBase>();
+            enemyHealth.TakeDamage(player.attacker.damage);
+        }
     }
 
     private void Bark()
@@ -94,23 +115,7 @@ public class PlayerAttacking : MonoBehaviour
                 }
             }
             
-            lastShootTime = Time.time;
-
-
-                    /*
-                    Vector3 direction = transform.forward;
-
-                    if (Physics.Raycast(spawnPoint.position, direction, out RaycastHit hit, range, mask))
-                    {
-                        if(hit.transform.gameObject.tag == "Enemy")
-                        {
-                            EnemyHealth enemyHealth = hit.transform.GetComponent<EnemyHealth>();
-                            HealthBase player = gameObject.GetComponent<HealthBase>();
-                            enemyHealth.TakeDamage(player.attacker.damage);
-                        }
-                    }
-                    */
-                    
+            lastShootTime = Time.time;                    
         }
     }
 

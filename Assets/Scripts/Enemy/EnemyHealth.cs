@@ -17,5 +17,6 @@ public class EnemyHealth : HealthBase
     protected override void Killed(GameObject character)
     {
         base.Killed(character);
+        gameObject.SetActive(false);
     }
 }

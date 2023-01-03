@@ -11,6 +11,7 @@ public class AttackRadius : MonoBehaviour
     public float attackDelay = 0.5f;
     public delegate void AttackEvent(IDamageable Target);
     public AttackEvent OnAttack;
+    public AttackEvent AttackEnemy;
     protected Coroutine AttackCoroutine;
 
     protected virtual void Awake()
@@ -23,10 +24,15 @@ public class AttackRadius : MonoBehaviour
         IDamageable damageable = other.GetComponent<IDamageable>();
         if(damageable != null)
         {
-            //Debug.Log("AttackRadius OnTriggerEnter()");
+            Debug.Log("AttackRadius OnTriggerEnter()");
+            Debug.Log("player tag: " + gameObject.name);
+            Debug.Log("damageable tag: " + damageable.GetTransform().gameObject.tag);
             Damageables.Add(damageable);
-
-            if(AttackCoroutine == null)
+            if(gameObject.tag == "Player" && damageable.GetTransform().gameObject.tag == "Enemy")
+            {
+                AttackEnemy?.Invoke(damageable);
+            }
+            else if(AttackCoroutine == null)
             {
                 //Debug.Log("AttackCorourine == null");
                 AttackCoroutine = StartCoroutine(Attack());
@@ -41,7 +47,7 @@ public class AttackRadius : MonoBehaviour
         if (damageable != null)
         {
             Damageables.Remove(damageable);
-            if(Damageables.Count == 0)
+            if(Damageables.Count == 0 && AttackCoroutine != null)
             {
                 StopCoroutine(AttackCoroutine);
                 AttackCoroutine = null;
