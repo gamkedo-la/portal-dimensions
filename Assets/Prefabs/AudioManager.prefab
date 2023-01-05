@@ -58,13 +58,13 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: DogBark
-    clip: {fileID: 8300000, guid: ea149bac954e3bf41b94f2777c86ae02, type: 3}
+    clip: {fileID: 8300000, guid: b2a78cb3302645449b8175127dc530f0, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: SwordAttack
-    clip: {fileID: 8300000, guid: 6938341e425cd0f4aa4565bbdb379e06, type: 3}
+    clip: {fileID: 8300000, guid: 528701739d1f9aa4186c9b3d85eba38b, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0

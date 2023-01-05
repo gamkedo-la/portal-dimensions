@@ -329,6 +329,7 @@ MonoBehaviour:
   killedSound: 
   healSound: 
   enemy: {fileID: 11400000, guid: 120f0a1f23d5635498b8746faa332355, type: 2}
+  waitTillDeath: 0.5
 --- !u!65 &177830398734637170
 BoxCollider:
   m_ObjectHideFlags: 0
