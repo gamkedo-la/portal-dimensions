@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] ItemCollection gearCollection;
     //private HealthBase playerHealth;
 
+    public bool gamePaused = false;
+
     private void OnEnable()
     {
         gearCollection.amount = 0;
@@ -25,6 +27,22 @@ public class GameManager : MonoBehaviour
     {
         HealthBase.OnHealthChanged -= UpdateHealth;
         Gears.Changed -= UpdateGears;
+    }
+
+    private void checkPause()
+    {
+        if ((Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) && !gamePaused)
+        {
+            Debug.Log("Pausing game");
+            Time.timeScale = 0;
+            gamePaused = true;
+        }
+        else if ((Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) && gamePaused)
+        {
+            Debug.Log("Resuming game");
+            Time.timeScale = 1;
+            gamePaused = false;
+        }
     }
 
     // Start is called before the first frame update
@@ -52,6 +70,7 @@ public class GameManager : MonoBehaviour
             player.Heal(1);
             Debug.Log("Health is at " + player.GetHealth());
         }
+        checkPause();
     }
 
     void DisplayHUB()
@@ -69,4 +88,5 @@ public class GameManager : MonoBehaviour
     {
         gearText.text = gearCollection.amount.ToString();
     }
+
 }

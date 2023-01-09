@@ -17,6 +17,8 @@ public class CameraController : MonoBehaviour
     [SerializeField] bool invertX;
     [SerializeField] bool invertY;
 
+    [SerializeField] GameManager gameManager;
+
     float invertXVal;
     float invertYVal;
 
@@ -33,6 +35,11 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        if(gameManager.gamePaused)
+        {
+            return;
+        }
+
         invertXVal = (invertX) ? -1 : 1;
         invertYVal = (invertY) ? -1 : 1;
 
