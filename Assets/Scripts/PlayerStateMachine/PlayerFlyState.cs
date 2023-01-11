@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerJumpState : PlayerBaseState
+public class PlayerFlyState : PlayerBaseState
 {
-    public PlayerJumpState(PlayerStateMachine currentContext, PlayerStateFactory playerStateFactory)
+    private const float FLYING_GRAVITY = 0f;
+    private float originalGravity;
+
+    
+    public PlayerFlyState(PlayerStateMachine currentContext, PlayerStateFactory playerStateFactory)
     : base(currentContext, playerStateFactory) 
     {
         IsRootState = true;
@@ -13,9 +17,10 @@ public class PlayerJumpState : PlayerBaseState
 
     public override void EnterState()
     {
-        Debug.Log("[PlayerJumpState] EnterState(): Start the Jump");
-        Jump();
-        //Debug.Log("PlayerJumpState EnterState");
+        Debug.Log("[PlayerFlyState] EnterState(): Start the Fly");
+        originalGravity = Ctx.Gravity;
+        Fly();
+        //Debug.Log("PlayerFlyState EnterState");
     }
 
     public override void UpdateState()
@@ -26,27 +31,23 @@ public class PlayerJumpState : PlayerBaseState
 
     public override void ExitState()
     {     
-        //Debug.Log("PlayerJumpState ExitState");
+        //Debug.Log("PlayerFlyState ExitState");
     }
 
     public override void CheckSwitchStates()
     {
-        if(Ctx.Controller.isGrounded)
+        if(Ctx.Controller.isGrounded || Input.GetButtonUp("Jump"))
         {
+            Ctx.Gravity = originalGravity;
             if (Input.GetButton("Vertical") || Input.GetButton("Horizontal"))
             {
                 SwitchState(Factory.Walk());
             }
-            else 
+            else
             {
                 SwitchState(Factory.Grounded());
             }
                 
-        }
-        else if (Input.GetButtonDown("Jump"))
-        {
-            //Debug.Log("[PlayerJumpState] CheckSwitchStates(): Starting to Fly");
-            SwitchState(Factory.Fly());
         }
     }
 
@@ -66,10 +67,11 @@ public class PlayerJumpState : PlayerBaseState
         }
     }
 
-    private void Jump()
+    private void Fly()
     {
-        //Debug.Log("[PlayerJumpState] EnterState(): Jumping the Jump");
-        Ctx.VelocityY = Mathf.Sqrt(Ctx.JumpHeight * -2f * Ctx.Gravity);
+        //Debug.Log("[PlayerFlyState] EnterState(): Flying");
+        Ctx.VelocityY = 0;
+        Ctx.Gravity = FLYING_GRAVITY;
     }
 
     private void Move(float currentSpeed)

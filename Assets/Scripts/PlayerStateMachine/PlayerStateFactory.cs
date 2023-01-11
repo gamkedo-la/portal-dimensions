@@ -23,6 +23,10 @@ public class PlayerStateFactory
     {
         return new PlayerJumpState(context, this);
     }
+    public PlayerBaseState Fly()
+    {
+        return new PlayerFlyState(context, this);
+    }
     public PlayerBaseState Grounded()
     {
         return new PlayerGroundedState(context, this);
