@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
     //private HealthBase playerHealth;
 
     public bool gamePaused = false;
+    public GameObject pauseScreen;
 
     private void OnEnable()
     {
@@ -33,15 +35,11 @@ public class GameManager : MonoBehaviour
     {
         if ((Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) && !gamePaused)
         {
-            Debug.Log("Pausing game");
-            Time.timeScale = 0;
-            gamePaused = true;
+            PauseGame();
         }
         else if ((Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) && gamePaused)
         {
-            Debug.Log("Resuming game");
-            Time.timeScale = 1;
-            gamePaused = false;
+            ResumeGame();
         }
     }
 
@@ -54,6 +52,7 @@ public class GameManager : MonoBehaviour
         }
         //playerHealth = player;
         DisplayHUB();
+        ResumeGame();
     }
 
     // Update is called once per frame
@@ -89,4 +88,35 @@ public class GameManager : MonoBehaviour
         gearText.text = gearCollection.amount.ToString();
     }
 
+    void PauseGame()
+    {
+        Debug.Log("Pausing game");
+        Time.timeScale = 0;
+        gamePaused = true;
+        pauseScreen.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void ResumeGame()
+    {
+        Debug.Log("Resuming game");
+        Time.timeScale = 1;
+        gamePaused = false;
+        pauseScreen.SetActive(false);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+    }
+
+    public void RestartGameAndBackToMenu()
+    {
+        Debug.Log("TODO: When Main Menu is ready");
+
+    }
 }
