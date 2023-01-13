@@ -22,13 +22,13 @@ public class GameManager : MonoBehaviour
     {
         gearCollection.amount = 0;
         HealthBase.OnHealthChanged += UpdateHealth;
-        Gears.Changed += UpdateGears;
+        Item.Changed += UpdateInfo;
     }
 
     private void OnDisable()
     {
         HealthBase.OnHealthChanged -= UpdateHealth;
-        Gears.Changed -= UpdateGears;
+        Item.Changed -= UpdateInfo;
     }
 
     private void checkPause()
@@ -83,9 +83,10 @@ public class GameManager : MonoBehaviour
         healthText.text = player.GetHealth().ToString();
     }
 
-    void UpdateGears()
+    void UpdateInfo(GameObject item)
     {
-        gearText.text = gearCollection.amount.ToString();
+        if(item.tag == "Gears")
+            gearText.text = gearCollection.amount.ToString();
     }
 
     void PauseGame()

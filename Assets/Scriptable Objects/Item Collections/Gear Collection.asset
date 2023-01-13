@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50c2b5b3839372b4fb6b24106838b203, type: 3}
   m_Name: Gear Collection
   m_EditorClassIdentifier: 
+  item: {fileID: 1346444251, guid: e7e657ad6ce172c40abb306174ba0ff0, type: 3}
   itemName: NutsNBolts
   amount: 0
   worth: 1
-  pickUpSound: {fileID: 11400000, guid: 4ac5ac733d2b20e409f55a4359fc328e, type: 2}
   soundName: 

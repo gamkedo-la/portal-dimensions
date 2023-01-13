@@ -11,6 +11,22 @@ public class Bounce : MonoBehaviour
     private float startingHeight;
     private float timeOffSet;
 
+    [SerializeField] bool fall = true;
+    [SerializeField] LayerMask groundLayer;
+    public float gravity = -9.81f;
+
+    private void Awake()
+    {
+        Ray ray = new Ray(transform.position, -transform.up);
+        RaycastHit hit;
+        if(Physics.Raycast(ray, out hit))
+        {
+            if(hit.collider.gameObject.layer == groundLayer)
+            {
+                transform.position = hit.point;
+            }
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -31,5 +47,14 @@ public class Bounce : MonoBehaviour
         Vector3 rotation = transform.localRotation.eulerAngles;
         rotation.y += rotationSpeed * Time.deltaTime;
         transform.localRotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Hit");
+        if(collision.gameObject.layer == groundLayer)
+        {
+            fall = false;
+        }
     }
 }

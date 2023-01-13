@@ -124,8 +124,8 @@ public class PlayerAttacking : MonoBehaviour
         Vector3 viewAngle3 = DirectionFromAngle(spawnPoint.eulerAngles.y, -hitAngle / 2);
         Vector3 viewAngle4 = DirectionFromAngle(spawnPoint.eulerAngles.y, hitAngle / 2);
 
-        Handles.DrawLine(spawnPoint.position, spawnPoint.position + viewAngle3 * range);
-        Handles.DrawLine(spawnPoint.position, spawnPoint.position + viewAngle4 * range);
+        //Handles.DrawLine(spawnPoint.position, spawnPoint.position + viewAngle3 * range);
+        //Handles.DrawLine(spawnPoint.position, spawnPoint.position + viewAngle4 * range);
     }
 
     private Vector3 DirectionFromAngle(float eulerY, float angleInDegrees)

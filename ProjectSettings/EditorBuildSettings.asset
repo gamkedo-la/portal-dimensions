@@ -11,10 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Castle Scene.unity
     guid: 17f21ed7f31563d4cb65741fc7d1cb53
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Forest Scene.unity
     guid: 06bb975fecaa39842a6ab4f4c6b0fa71
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Sky Scene.unity
     guid: d71bd7ada4ca95f4788be889b21699c3
   m_configObjects: {}

@@ -1,18 +1,21 @@
 using SoundSystem;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public class Item : PoolableObject
 {
-    [SerializeField] ItemType itemType;
-    [SerializeField] MusicEvent pickUpSound;
-    public ItemType ItemType => itemType;
-    [SerializeField] ItemCollection collection;
+    public static event Action<GameObject> Changed;
+
+    [SerializeField] public GameObject item;
+    [SerializeField] public string itemName;
+    [SerializeField] public int worth;
+    [SerializeField] public string soundName;
+    [SerializeField] ItemCollection gear;
 
     private AudioManager audioManager;
-    [SerializeField] string soundName;
 
     
 
@@ -35,20 +38,19 @@ public class Item : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
+            gear.amount += worth;
+            audioManager.Play(soundName);
+            Changed?.Invoke(item);
+            gameObject.SetActive(false);
+            /*
             Player player = other.GetComponent<Player>();
             if(player != null)
             {
                 //collection.Add(gameObject.GetComponent<Item>());
             }
-            //pickUpSound.Play(2.5f);
             audioManager.Play(soundName);
             Destroy(gameObject);
+            */
         }
     }
-
-    private void OnValidate()
-    {
-        gameObject.name = itemType.name;
-    }
-
 }
