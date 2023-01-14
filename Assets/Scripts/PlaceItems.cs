@@ -38,7 +38,6 @@ public class PlaceItems : MonoBehaviour
         while(spawnCount < numOfItemsToSpawn)
         {
             int spawnIndex = spawnCount % items.Count;
-            Debug.Log(itemObjectPools.Count);
             DoSpawnItem(spawnIndex, GetRandomPositionInBounds());
             spawnCount++;
         }

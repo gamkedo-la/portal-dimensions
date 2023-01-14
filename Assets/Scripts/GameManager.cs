@@ -120,4 +120,10 @@ public class GameManager : MonoBehaviour
         Debug.Log("TODO: When Main Menu is ready");
 
     }
+
+    public void Quit()
+    {
+        Debug.Log("Quit to desktop");
+        Application.Quit();
+    }
 }

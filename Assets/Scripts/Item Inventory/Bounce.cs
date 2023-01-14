@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Bounce : MonoBehaviour
 {
@@ -11,25 +12,26 @@ public class Bounce : MonoBehaviour
     private float startingHeight;
     private float timeOffSet;
 
-    [SerializeField] bool fall = true;
-    [SerializeField] LayerMask groundLayer;
-    public float gravity = -9.81f;
+    [SerializeField] float yOffset;
+    [SerializeField] public int groundLayerIndex;
 
-    private void Awake()
-    {
-        Ray ray = new Ray(transform.position, -transform.up);
-        RaycastHit hit;
-        if(Physics.Raycast(ray, out hit))
-        {
-            if(hit.collider.gameObject.layer == groundLayer)
-            {
-                transform.position = hit.point;
-            }
-        }
-    }
+
     // Start is called before the first frame update
     void Start()
     {
+        //groundLayerIndex = Mathf.RoundToInt(Mathf.Log(groundLayer.value, 2));
+        Debug.Log(groundLayerIndex);
+        Ray ray = new Ray(transform.position, -transform.up);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))//, float.MaxValue, groundLayer))
+        {
+            Debug.Log("GroundLayerIndex: " + groundLayerIndex + " hits layer " + hit.collider.gameObject.layer);
+            if (hit.collider.gameObject.layer == groundLayerIndex)
+            {
+                transform.position = new Vector3(hit.point.x, hit.point.y + yOffset, hit.point.z);
+            }
+        }
+
         startingHeight = transform.localPosition.y;
         timeOffSet = Random.value * Mathf.PI * 2;
     }
@@ -47,14 +49,5 @@ public class Bounce : MonoBehaviour
         Vector3 rotation = transform.localRotation.eulerAngles;
         rotation.y += rotationSpeed * Time.deltaTime;
         transform.localRotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("Hit");
-        if(collision.gameObject.layer == groundLayer)
-        {
-            fall = false;
-        }
     }
 }
