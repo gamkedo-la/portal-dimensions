@@ -14,23 +14,27 @@ public class Bounce : MonoBehaviour
 
     [SerializeField] float yOffset;
     [SerializeField] public int groundLayerIndex;
+    [SerializeField] bool fall = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
         //groundLayerIndex = Mathf.RoundToInt(Mathf.Log(groundLayer.value, 2));
-        Debug.Log(groundLayerIndex);
-        Ray ray = new Ray(transform.position, -transform.up);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))//, float.MaxValue, groundLayer))
+        if(fall)
         {
-            Debug.Log("GroundLayerIndex: " + groundLayerIndex + " hits layer " + hit.collider.gameObject.layer);
-            if (hit.collider.gameObject.layer == groundLayerIndex)
+            Ray ray = new Ray(transform.position, -transform.up);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))//, float.MaxValue, groundLayer))
             {
-                transform.position = new Vector3(hit.point.x, hit.point.y + yOffset, hit.point.z);
+                //Debug.Log("GroundLayerIndex: " + groundLayerIndex + " hits layer " + hit.collider.gameObject.layer);
+                if (hit.collider.gameObject.layer == groundLayerIndex)
+                {
+                    transform.position = new Vector3(hit.point.x, hit.point.y + yOffset, hit.point.z);
+                }
             }
         }
+
 
         startingHeight = transform.localPosition.y;
         timeOffSet = Random.value * Mathf.PI * 2;

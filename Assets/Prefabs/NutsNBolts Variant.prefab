@@ -203,6 +203,7 @@ MonoBehaviour:
   rotationSpeed: 45
   yOffset: 0
   groundLayerIndex: 0
+  fall: 0
 --- !u!1 &2132334256009395701 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7512812643276389546, guid: 76c987beff3e68045b30b79ed5befbfd, type: 3}
@@ -225,6 +226,7 @@ MonoBehaviour:
   rotationSpeed: 45
   yOffset: 0
   groundLayerIndex: 0
+  fall: 0
 --- !u!1 &5536333284820476160 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5116005390424858529, guid: 76c987beff3e68045b30b79ed5befbfd, type: 3}
@@ -247,6 +249,7 @@ MonoBehaviour:
   rotationSpeed: 45
   yOffset: 0
   groundLayerIndex: 0
+  fall: 0
 --- !u!1 &8724638165783444494 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 76c987beff3e68045b30b79ed5befbfd, type: 3}
@@ -299,3 +302,4 @@ MonoBehaviour:
   rotationSpeed: 20
   yOffset: 1
   groundLayerIndex: 6
+  fall: 1

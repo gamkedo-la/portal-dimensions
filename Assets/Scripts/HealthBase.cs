@@ -44,7 +44,7 @@ public class HealthBase : MonoBehaviour, IDamageable
         return health;  
     }
 
-    public void TakeDamage(int damageAmount)
+    public virtual void TakeDamage(int damageAmount)
     {
         Debug.Log(gameObject.name + " " + damageAmount);
         health -= damageAmount;

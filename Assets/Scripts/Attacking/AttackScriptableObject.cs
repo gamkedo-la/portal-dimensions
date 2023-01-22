@@ -59,10 +59,10 @@ public class AttackScriptableObject : ScriptableObject
 
     public void SetUpPlayer(Player player)
     {
-        (player.attackRadius.sphereCollider == null ? player.attackRadius.GetComponent<SphereCollider>() :
-            player.attackRadius.sphereCollider).radius = attackRadius;
-        player.attackRadius.attackDelay = attackDelay;
-        player.attackRadius.damage = damage;
+        //(player.attackRadius.sphereCollider == null ? player.attackRadius.GetComponent<SphereCollider>() :
+        //    player.attackRadius.sphereCollider).radius = attackRadius;
+        //player.attackRadius.attackDelay = attackDelay;
+        //player.attackRadius.damage = damage;
         player.attackSound = attackSound;
         player.hurtSound = hurtSound;
         player.killedSound = killedSound;
