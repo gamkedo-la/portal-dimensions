@@ -7,13 +7,13 @@ using UnityEngine;
 
 public class Item : PoolableObject
 {
-    public static event Action<GameObject> Changed;
+    public static event Action Changed;
 
     [SerializeField] public GameObject item;
     [SerializeField] public string itemName;
     [SerializeField] public int worth;
     [SerializeField] public string soundName;
-    [SerializeField] ItemCollection gear;
+    [SerializeField] protected ItemCollection collection;
 
     private AudioManager audioManager;
 
@@ -34,23 +34,14 @@ public class Item : PoolableObject
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
-        {
-            gear.amount += worth;
+        //if(other.gameObject.tag == "Player")
+        //{
+            //gear.amount += worth;
             audioManager.Play(soundName);
-            Changed?.Invoke(item);
+            Changed?.Invoke();
             gameObject.SetActive(false);
-            /*
-            Player player = other.GetComponent<Player>();
-            if(player != null)
-            {
-                //collection.Add(gameObject.GetComponent<Item>());
-            }
-            audioManager.Play(soundName);
-            Destroy(gameObject);
-            */
-        }
+        //}
     }
 }

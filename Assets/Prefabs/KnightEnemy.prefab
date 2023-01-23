@@ -330,6 +330,10 @@ MonoBehaviour:
   healSound: 
   enemy: {fileID: 11400000, guid: 120f0a1f23d5635498b8746faa332355, type: 2}
   waitTillDeath: 0.5
+  dropTreats: {fileID: 595377454679991971, guid: 38d0573d8a7e28b41a3a955ed5c8ce04, type: 3}
+  numOfTreatsToSpawn: 3
+  items:
+  - {fileID: 11400000, guid: 420b27dfbf2daec458d4f020e387a857, type: 2}
 --- !u!65 &177830398734637170
 BoxCollider:
   m_ObjectHideFlags: 0

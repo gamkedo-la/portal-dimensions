@@ -11,12 +11,19 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] TMP_Text healthText;
     [SerializeField] TMP_Text gearText;
+    [SerializeField] TMP_Text treatText;
     [SerializeField] Player player;
     [SerializeField] ItemCollection gearCollection;
+    [SerializeField] ItemCollection treatCollection;
     //private HealthBase playerHealth;
 
     public bool gamePaused = false;
     public GameObject pauseScreen;
+
+    public GameObject instructionsScreen;
+    public GameObject instructionPgOne;
+    public GameObject instructionPgTwo;
+    public GameObject instructionPgThree;
 
     private void OnEnable()
     {
@@ -76,6 +83,7 @@ public class GameManager : MonoBehaviour
     {
         healthText.text = player.healthMax.ToString();
         gearText.text = gearCollection.amount.ToString();
+        treatText.text = treatCollection.amount.ToString();
     }
 
     void UpdateHealth(GameObject character)
@@ -83,10 +91,11 @@ public class GameManager : MonoBehaviour
         healthText.text = player.GetHealth().ToString();
     }
 
-    void UpdateInfo(GameObject item)
+    void UpdateInfo()
     {
-        if(item.tag == "Gears")
-            gearText.text = gearCollection.amount.ToString();
+        //if(item.tag == "Gears")
+        gearText.text = gearCollection.amount.ToString();
+        treatText.text = treatCollection.amount.ToString();
     }
 
     void PauseGame()
@@ -105,14 +114,22 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         gamePaused = false;
         pauseScreen.SetActive(false);
+        ResetInstructionScreen();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void ResetInstructionScreen()
+    {
+        instructionPgOne.SetActive(true);
+        instructionPgTwo.SetActive(false);
+        instructionPgThree.SetActive(false);
+        instructionsScreen.SetActive(false);
     }
 
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
     }
 
     public void RestartGameAndBackToMenu()

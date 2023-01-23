@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c2b5b3839372b4fb6b24106838b203, type: 3}
+  m_Name: Treat Collection
+  m_EditorClassIdentifier: 
+  item: {fileID: 7861974571039614401, guid: 38d0573d8a7e28b41a3a955ed5c8ce04, type: 3}
+  itemName: Treat
+  amount: 0
+  worth: 1
+  soundName: 

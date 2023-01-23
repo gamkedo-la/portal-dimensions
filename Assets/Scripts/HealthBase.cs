@@ -25,8 +25,10 @@ public class HealthBase : MonoBehaviour, IDamageable
         this.character = character;
     }   
     */
+
     private void Start()
     {
+        Debug.Log(gameObject.name);
         audioManager = AudioManager.instance;
         if (audioManager == null)
         {
@@ -34,8 +36,8 @@ public class HealthBase : MonoBehaviour, IDamageable
         }
 
         health = healthMax;
-        //hurtSound = attacker.hurtSound;
-        //killedSound = attacker.killedSound;
+        hurtSound = attacker.hurtSound;
+        killedSound = attacker.killedSound;
         //healSound = attacker.healSound;
     }
 
@@ -52,6 +54,7 @@ public class HealthBase : MonoBehaviour, IDamageable
         if (health < 0)
             health = 0;
         OnHealthChanged?.Invoke(character);
+        Debug.Log(hurtSound);
         audioManager.Play(hurtSound);
         if (health <= 0)
         {

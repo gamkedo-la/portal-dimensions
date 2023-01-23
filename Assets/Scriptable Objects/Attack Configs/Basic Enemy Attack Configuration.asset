@@ -17,8 +17,8 @@ MonoBehaviour:
   attackRadius: 3
   attackDelay: 1
   attackSound: 
-  hurtSound: 
-  killedSound: 
+  hurtSound: EnemyDamage
+  killedSound: EnemyDamage
   healSound: 
   isEnemy: 1
   bulletPrefab: {fileID: 0}

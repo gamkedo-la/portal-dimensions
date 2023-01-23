@@ -284,7 +284,7 @@ MonoBehaviour:
   itemName: Gears
   worth: 1
   soundName: 
-  gear: {fileID: 11400000, guid: 1030f6c815b576046a304b0907931f0f, type: 2}
+  collection: {fileID: 11400000, guid: 1030f6c815b576046a304b0907931f0f, type: 2}
 --- !u!114 &7336553628422461036
 MonoBehaviour:
   m_ObjectHideFlags: 0
