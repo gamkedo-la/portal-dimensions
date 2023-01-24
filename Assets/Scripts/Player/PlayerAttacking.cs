@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.ProBuilder;
 
 public class PlayerAttacking : MonoBehaviour
 {
@@ -14,8 +15,11 @@ public class PlayerAttacking : MonoBehaviour
     [SerializeField] public Transform spawnPoint;
     [SerializeField] public float hitAngle = 30f;
     [SerializeField] public AttackRadius attackRadius;
+    [SerializeField] public GameObject barkPoint;
+    [SerializeField] public GameObject barkBall;
 
     private bool isRunning;
+    private bool hitEnemy = false;
     private float lastShootTime;
 
     private AudioManager audioManager;
@@ -41,7 +45,7 @@ public class PlayerAttacking : MonoBehaviour
         {
             Debug.LogError("No audio manager found in scene");
         }
-
+        barkPoint.transform.localScale = new Vector3(barkPoint.transform.localScale.x, barkPoint.transform.localScale.y, range);
         //isAttacking = true;
         //OnAttack(damageable);
         
@@ -92,19 +96,23 @@ public class PlayerAttacking : MonoBehaviour
         {
             audioManager.Play(attackSound);
             barkParticles.Play(true);
+            ShootBark();
 
             Collider[] rangeChecks = Physics.OverlapSphere(spawnPoint.position, range, mask);
+            //Debug.Log("First: " + rangeChecks[0].name);
             if (rangeChecks.Length != 0)
             {
                 Transform target = rangeChecks[0].transform;
                 Vector3 directionToTarget = (target.position - spawnPoint.position).normalized;
+                Debug.Log("Second: " + rangeChecks[0].name);
+                Debug.Log(Vector3.Angle(spawnPoint.forward, directionToTarget));
 
-                if (Vector3.Angle(spawnPoint.forward, directionToTarget) < hitAngle / 2)
+                if (Vector3.Angle(spawnPoint.forward, directionToTarget) < hitAngle / 2 || hitEnemy)
                 {
                     float distanceToTarget = Vector3.Distance(spawnPoint.position, target.position);
                     Debug.Log("Direction to target: " + directionToTarget);
                     Debug.Log("Dist to target: " + distanceToTarget);
-                    Debug.Log(target.gameObject.layer);
+                    Debug.Log("Target layer: " + target.gameObject.layer);
                     if (Physics.Raycast(spawnPoint.position, directionToTarget, range, mask))
                     {
                         Debug.Log("Here");
@@ -114,9 +122,21 @@ public class PlayerAttacking : MonoBehaviour
                     }
                 }
             }
-            
+            HitEnemy();
             lastShootTime = Time.time;                    
         }
+    }
+
+    public void ShootBark()
+    {
+        GameObject ball = Instantiate(barkBall, transform.position, transform.rotation);
+        ball.GetComponent<Rigidbody>().AddRelativeForce(new Vector3 (gameObject.transform.forward.x, gameObject.transform.forward.y, gameObject.transform.forward.z + 700f));
+        Destroy(ball, 5);
+    }
+
+    public void HitEnemy()
+    {
+        hitEnemy = !hitEnemy;
     }
 
     private void OnDrawGizmos()

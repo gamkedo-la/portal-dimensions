@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Gears
   - Enemy
+  - PlayerBark
   layers:
   - Default
   - TransparentFX

@@ -12,7 +12,6 @@ public class EnemyHealth : HealthBase
     public List<ItemCollection> items = new List<ItemCollection>();
     private Dictionary<int, ObjectPool> itemObjectPools = new Dictionary<int, ObjectPool>();
 
-
     private void Awake()
     {
         //hurtSound = enemy.hurtSound;
@@ -27,11 +26,31 @@ public class EnemyHealth : HealthBase
 
     void Start()
     {
-        Debug.Log(gameObject.name);
         audioManager = AudioManager.instance;
         if (audioManager == null)
         {
             Debug.LogError("No audio manager found in scene");
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "PlayerBark")
+        {
+            GameObject child = collision.gameObject;
+            while(child != null)
+            {
+                if(child.transform.parent != null && child.transform.parent.GetComponent<PlayerAttacking>())
+                {
+                    PlayerAttacking player = collision.gameObject.GetComponentInParent<PlayerAttacking>();
+                    player.HitEnemy();
+                    Destroy(collision.gameObject);
+                }
+                else
+                {
+                    child = child.transform.parent.gameObject;
+                }
+            }
         }
     }
 

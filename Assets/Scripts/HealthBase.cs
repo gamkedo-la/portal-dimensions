@@ -28,7 +28,6 @@ public class HealthBase : MonoBehaviour, IDamageable
 
     private void Start()
     {
-        Debug.Log(gameObject.name);
         audioManager = AudioManager.instance;
         if (audioManager == null)
         {
@@ -48,13 +47,11 @@ public class HealthBase : MonoBehaviour, IDamageable
 
     public virtual void TakeDamage(int damageAmount)
     {
-        Debug.Log(gameObject.name + " " + damageAmount);
         health -= damageAmount;
         //OnHealthChanged?.Invoke(character);
         if (health < 0)
             health = 0;
         OnHealthChanged?.Invoke(character);
-        Debug.Log(hurtSound);
         audioManager.Play(hurtSound);
         if (health <= 0)
         {
