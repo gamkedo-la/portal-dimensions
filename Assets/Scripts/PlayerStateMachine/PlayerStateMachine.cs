@@ -11,7 +11,6 @@ public class PlayerStateMachine : MonoBehaviour
     public float speed = 66f;
     private float walkingSpeed;
     private float runningSpeed;
-    private float runBoostSpeed;
     public float turnSmoothTime = 0.1f;
     [HideInInspector] public float turnSmoothVelocity;
 
@@ -29,11 +28,10 @@ public class PlayerStateMachine : MonoBehaviour
     bool isJumping = false;
     bool isMoving = false;
 
-    //Attacking
-    //bool isAttacking = false;
+    //Sound
+    public string walkSound;
 
-    //Running
-    bool runBoostActive = false;
+    private AudioManager audioManager;
 
     CameraController cameraController;
     PlayerBaseState currentState;
@@ -72,9 +70,14 @@ public class PlayerStateMachine : MonoBehaviour
     {
         walkingSpeed = speed;
         runningSpeed = speed * 2.0f;
-        runBoostSpeed = speed * 3.0f;
 
         cameraController = Camera.main.GetComponent<CameraController>();
+
+        audioManager = AudioManager.instance;
+        if (audioManager == null)
+        {
+            Debug.LogError("No audio manager found in scene");
+        }
     }
 
     // Update is called once per frame
@@ -104,43 +107,13 @@ public class PlayerStateMachine : MonoBehaviour
         }
     }
     
-    private void Move(float currentSpeed)
+    public void PlaySound(string soundName)
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
-
-        if (direction.magnitude >= 0.1f)
-        {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
-            Vector3 moveDir = cameraController.PlanarRotation * direction;//Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            controller.Move(moveDir.normalized * currentSpeed * Time.deltaTime);
-        }
+        audioManager.Play(soundName);
     }
 
-    private void Jump()
+    public void StopSound(string soundName)
     {
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
-
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
-    }
-
-    private void Run()
-    {
-        if (Input.GetKey(KeyCode.LeftShift) && isGrounded)
-        {
-            isRunning = true;
-        }
-        if (Input.GetKeyUp(KeyCode.LeftShift) || !isGrounded)
-        {
-            isRunning = false;
-        }
+        audioManager.Stop(soundName);
     }
 }

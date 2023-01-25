@@ -17,7 +17,7 @@ MonoBehaviour:
   attackRadius: 2
   attackDelay: 1
   attackSound: 
-  hurtSound: 
+  hurtSound: DogHurt
   killedSound: 
   healSound: 
   isEnemy: 0

@@ -286,9 +286,9 @@ GameObject:
   - component: {fileID: 3130994341148645067}
   - component: {fileID: 6275460178985597716}
   - component: {fileID: 2608613706438842322}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: PlayerBark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3579,6 +3579,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
+  walkSound: PlayerWalk
 --- !u!54 &6713860687613018603
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3616,7 +3617,7 @@ MonoBehaviour:
   isAttacking: 0
   attackSound: DogBark
   spawnPoint: {fileID: 6713860686638287428}
-  hitAngle: 45
+  hitAngle: 90
   attackRadius: {fileID: 6713860686341169702}
   barkPoint: {fileID: 6713860686638287431}
   barkBall: {fileID: 257802951346268611}
