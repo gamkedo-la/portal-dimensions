@@ -44,11 +44,11 @@ public class PlayerInteract : MonoBehaviour
             }
         }
 
-        Debug.Log("Colliders count: " + colliders.Count());
-        Debug.Log("Interactables count: " + interactables.Count);
+        //Debug.Log("Colliders count: " + colliders.Count());
+        //Debug.Log("Interactables count: " + interactables.Count);
         if(!npcFound)
         {
-            Debug.Log("Lost");
+            //Debug.Log("Lost");
             OnInteractableLost?.Invoke(null);
         }
 

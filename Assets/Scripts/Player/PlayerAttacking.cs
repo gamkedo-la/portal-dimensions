@@ -69,6 +69,7 @@ public class PlayerAttacking : MonoBehaviour
 
     private void Running()
     {
+        Debug.Log("[PlayerAttacking] Running()");
         isRunning = true;
         playerState.SetIsRunning(true);
     }

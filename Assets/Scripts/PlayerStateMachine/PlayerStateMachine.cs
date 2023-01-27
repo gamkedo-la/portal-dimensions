@@ -11,6 +11,7 @@ public class PlayerStateMachine : MonoBehaviour
     public float speed = 66f;
     private float walkingSpeed;
     private float runningSpeed;
+    private float runBoostSpeed;
     public float turnSmoothTime = 0.1f;
     [HideInInspector] public float turnSmoothVelocity;
 
@@ -27,6 +28,11 @@ public class PlayerStateMachine : MonoBehaviour
     bool isRunning = false;
     bool isJumping = false;
     bool isMoving = false;
+
+    bool isRunBoost = false;
+
+    float runBoostTimer = 0;
+    float runBoostMaxTime;
 
     //Sound
     public string walkSound;
@@ -56,6 +62,8 @@ public class PlayerStateMachine : MonoBehaviour
     public bool IsJumping { get { return isJumping; } set { isJumping = value; } }
     public bool IsMoving { get { return isMoving; } set { isMoving = value; } }
     public bool IsRunning { get { return isRunning; } set { isRunning = value; } }
+    public bool IsRunBoost { get { return isRunBoost; } set { IsRunBoost = value; } }
+
     //public bool IsAttacking { get { return isAttacking; } set { isAttacking = value; } }
 
     private void Awake()
@@ -70,6 +78,10 @@ public class PlayerStateMachine : MonoBehaviour
     {
         walkingSpeed = speed;
         runningSpeed = speed * 2.0f;
+        runBoostSpeed = speed * 3.0f;
+
+        runBoostTimer = 0f;
+        runBoostMaxTime = 5f;
 
         cameraController = Camera.main.GetComponent<CameraController>();
 
@@ -92,10 +104,15 @@ public class PlayerStateMachine : MonoBehaviour
             velocity.y = -2f;
         }
         //Move(walkingSpeed);
+        if (isRunBoost)
+        {
+            CheckRunBoostTimer();
+        }
     }
 
     public void SetIsRunning(bool running)
     {
+        //Debug.Log("[PlayerStateMachine]: Running");
         isRunning = running;
         if(isRunning)
         {
@@ -105,6 +122,31 @@ public class PlayerStateMachine : MonoBehaviour
         {
             walkingSpeed = speed;
         }
+    }    
+    
+    public void SetIsRunBoost (bool runBoost)
+    {
+        //Debug.Log("[PlayerStateMachine]: Running Boost");
+        isRunBoost = runBoost;
+        if(isRunBoost)
+        {
+            walkingSpeed = runBoostSpeed;
+        }
+        else
+        {
+            walkingSpeed = speed;
+        }
+    }
+
+    private void CheckRunBoostTimer()
+    {
+        if (runBoostTimer >= runBoostMaxTime)
+        {
+            SetIsRunBoost(false);
+            return;
+        }
+
+        runBoostTimer += Time.deltaTime;
     }
     
     public void PlaySound(string soundName)
