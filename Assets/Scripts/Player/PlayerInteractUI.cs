@@ -38,12 +38,18 @@ public class PlayerInteractUI : MonoBehaviour
 
     private void Show(NPCInteractable target)
     {
+        if (interactText == null) {
+            return;
+        }
         interactText.text = "Press E to interact with " + target.name;
         interactText.gameObject.SetActive(true);
     }
 
     private void Hide(NPCInteractable target)
     {
+        if(interactText==null) {
+            return;
+        }
         interactText.gameObject.SetActive(false);
     }
 
