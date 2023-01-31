@@ -16,9 +16,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] Player player;
     [SerializeField] ItemCollection gearCollection;
     [SerializeField] ItemCollection treatCollection;
-    [SerializeField] ItemCollection rocketPackCollection;
     [SerializeField] int totalGearsNeeded;
     [SerializeField] int totalRocketPartsNeeded;
+    [SerializeField] Stats stats;
 
     public bool gamePaused = false;
     public GameObject pauseScreen;
@@ -30,15 +30,16 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
-        gearCollection.amount = 0;
         HealthBase.OnHealthChanged += UpdateHealth;
         Item.Changed += UpdateInfo;
+        StoreClerk.Changed += UpdateInfo;
     }
 
     private void OnDisable()
     {
         HealthBase.OnHealthChanged -= UpdateHealth;
         Item.Changed -= UpdateInfo;
+        StoreClerk.Changed -= UpdateInfo;
     }
 
     private void checkPause()
@@ -147,7 +148,9 @@ public class GameManager : MonoBehaviour
     public void RestartGameAndBackToMenu()
     {
         Debug.Log("TODO: When Main Menu is ready");
-
+        stats.rocketParts = 0;
+        gearCollection.amount = 0;
+        treatCollection.amount = 0;
     }
 
     public void Quit()

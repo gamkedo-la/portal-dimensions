@@ -8,8 +8,8 @@ public class PortalBlocker : MonoBehaviour
     [SerializeField] TMP_Text skyWorldBlockedTxt;
     [SerializeField] float timeTextShown;
     [SerializeField] ItemCollection gears;
-    [SerializeField] ItemCollection rocketParts;
     [SerializeField] GameManager gameManager;
+    [SerializeField] Stats stats;
 
     private int gearsNeeded;
     private int rocketNeeded;
@@ -23,7 +23,7 @@ public class PortalBlocker : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         int totalGears = gears.amount;
-        int totalRockets = rocketParts.amount;
+        int totalRockets = stats.rocketParts;
 
 
         if(totalGears < gearsNeeded && totalRockets < rocketNeeded)

@@ -61,7 +61,8 @@ public class PlayerInteractUI : MonoBehaviour
 
     private void Hide(NPCInteractable target)
     {
-        if(interactText==null) {
+        if(interactText==null) 
+        {
             return;
         }
         interactText.gameObject.SetActive(false);

@@ -6,9 +6,10 @@ using UnityEngine;
 
 public class StoreClerk : NPCInteractable
 {
+    public static event Action Changed;
     public static event Action PartAdded;
-    [SerializeField] Item treats;
-    [SerializeField] Item rocket;
+    [SerializeField] ItemCollection treats;
+    [SerializeField] Stats stats;
     [SerializeField] int costForPart;
     [SerializeField] TMP_Text exchangeText;
     [SerializeField] float timeTextShown;
@@ -17,14 +18,14 @@ public class StoreClerk : NPCInteractable
     public override void Interact()
     {
         base.Interact();
-        if(treats.collection.amount >= costForPart)
+        if(treats.amount >= costForPart && gameManager.GetRocketPartsNeeded() > stats.rocketParts)
         {
-            PartAdded?.Invoke();
-            treats.collection.amount -= costForPart;
-            treats.StatsChanged();
+            treats.amount -= costForPart;
             costForPart += 5;
+            PartAdded?.Invoke();            
+            Changed?.Invoke();
         }
-        else if(gameManager.GetRocketPartsNeeded() > rocket.collection.amount)
+        else if(gameManager.GetRocketPartsNeeded() > stats.rocketParts)
         {
             exchangeText.text = costForPart.ToString() + " treats needed to trade";
             StartCoroutine(ShowText());

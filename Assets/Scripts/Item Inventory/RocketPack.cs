@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RocketPack : Item
+public class RocketPack : MonoBehaviour
 {
     public GameObject rocketPack;
+    public Stats stats;
 
     private void OnEnable()
     {
         StoreClerk.PartAdded += AddPart;
     }
 
-    public override void OnDisable()
+    private void OnDisable()
     {
         StoreClerk.PartAdded -= AddPart;
-        base.OnDisable();
     }
 
     // Start is called before the first frame update
@@ -31,7 +31,6 @@ public class RocketPack : Item
 
     public void AddPart()
     {
-        collection.amount++;
-        StatsChanged();
+        stats.rocketParts++;
     }
 }

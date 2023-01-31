@@ -27,6 +27,11 @@ public class Item : PoolableObject
         }
     }
 
+    public override void OnDisable()
+    {
+        base.OnDisable();
+    }
+
     public virtual void StatsChanged()
     {
         //Debug.Log(gameObject.name);

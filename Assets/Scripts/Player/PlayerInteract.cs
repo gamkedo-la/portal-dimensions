@@ -10,9 +10,9 @@ public class PlayerInteract : MonoBehaviour
     public InteractableCloseEvent OnInteractableFound;
     public InteractableCloseEvent OnInteractableLost;
     [SerializeField] public float interactRange = 2f;
-    private void FixedUpdate()
+    private NPCInteractable npc;
+    private void Update()
     {
-        NPCInteractable npc = GetInteractableObject();
         if (Input.GetKeyDown(KeyCode.E) && npc != null)
         {
             npc.Interact();
@@ -27,6 +27,11 @@ public class PlayerInteract : MonoBehaviour
             }
             */
         }
+    }
+
+    private void FixedUpdate()
+    {
+        npc = GetInteractableObject();
     }
 
     public NPCInteractable GetInteractableObject()
