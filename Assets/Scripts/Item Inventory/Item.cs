@@ -13,20 +13,13 @@ public class Item : PoolableObject
     [SerializeField] public string itemName;
     [SerializeField] public int worth;
     [SerializeField] public string soundName;
-    [SerializeField] protected ItemCollection collection;
+    [SerializeField] public ItemCollection collection;
 
-    private AudioManager audioManager;
-
-    
-
-    private void OnEnable()
-    {
-        //(GetComponent<MeshRenderer>() != null)
-          //  GetComponent<MeshRenderer>().material.color = itemType.itemColor;
-    }
+    protected AudioManager audioManager;
 
     private void Start()
     {
+        Debug.Log(gameObject.name);
         audioManager = AudioManager.instance;
         if(audioManager == null)
         {
@@ -34,14 +27,10 @@ public class Item : PoolableObject
         }
     }
 
-    protected virtual void OnTriggerEnter(Collider other)
+    public virtual void StatsChanged()
     {
-        //if(other.gameObject.tag == "Player")
-        //{
-            //gear.amount += worth;
-            audioManager.Play(soundName);
-            Changed?.Invoke();
-            gameObject.SetActive(false);
-        //}
+        //Debug.Log(gameObject.name);
+        audioManager.Play(soundName);
+        Changed?.Invoke();
     }
 }

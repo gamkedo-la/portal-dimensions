@@ -10,16 +10,18 @@ public class NPCInteractable : MonoBehaviour
 
     private void Start()
     {
+        /*
         dialogueManager = DialogueManager.instance;
         if (dialogueManager == null)
         {
             Debug.LogError("No dialogue manager found in scene");
         }
+        */
     }
 
-    public void Interact()
+    public virtual void Interact()
     {
         Debug.Log("Interact");
-        dialogueManager.StartDialogue(dialogue);
+        //dialogueManager.StartDialogue(dialogue);
     }
 }

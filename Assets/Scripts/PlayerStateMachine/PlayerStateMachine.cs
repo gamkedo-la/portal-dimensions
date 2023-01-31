@@ -90,6 +90,8 @@ public class PlayerStateMachine : MonoBehaviour
         {
             Debug.LogError("No audio manager found in scene");
         }
+
+        StopSound(walkSound);
     }
 
     // Update is called once per frame

@@ -12,10 +12,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] TMP_Text healthText;
     [SerializeField] TMP_Text gearText;
     [SerializeField] TMP_Text treatText;
+    [SerializeField] TMP_Text rocketPackText;
     [SerializeField] Player player;
     [SerializeField] ItemCollection gearCollection;
     [SerializeField] ItemCollection treatCollection;
-    //private HealthBase playerHealth;
+    [SerializeField] ItemCollection rocketPackCollection;
+    [SerializeField] int totalGearsNeeded;
+    [SerializeField] int totalRocketPartsNeeded;
 
     public bool gamePaused = false;
     public GameObject pauseScreen;
@@ -93,9 +96,18 @@ public class GameManager : MonoBehaviour
 
     void UpdateInfo()
     {
-        //if(item.tag == "Gears")
         gearText.text = gearCollection.amount.ToString();
         treatText.text = treatCollection.amount.ToString();
+    }
+
+    public int GetGearsNeeded()
+    {
+        return totalGearsNeeded;
+    }
+
+    public int GetRocketPartsNeeded()
+    {
+        return totalRocketPartsNeeded;
     }
 
     void PauseGame()

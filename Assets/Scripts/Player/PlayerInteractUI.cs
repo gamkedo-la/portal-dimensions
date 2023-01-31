@@ -8,17 +8,25 @@ public class PlayerInteractUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text interactText;
     [SerializeField] private PlayerInteract playerInteract;
+    [SerializeField] private StoreClerk clerk;
 
     private void OnEnable()
     {
         playerInteract.OnInteractableFound += Show;
         playerInteract.OnInteractableLost += Hide;
+        StoreClerk.PartAdded += SetAmountText;
     }
 
     private void OnDisable()
     {
         playerInteract.OnInteractableFound -= Show;
         playerInteract.OnInteractableLost -= Hide;
+        StoreClerk.PartAdded -= SetAmountText;
+    }
+
+    private void Start()
+    {
+        SetAmountText();
     }
 
     /*
@@ -36,12 +44,18 @@ public class PlayerInteractUI : MonoBehaviour
     }
     */
 
+    public void SetAmountText()
+    {
+        if(clerk != null)
+            interactText.text = "Press E to trade " + clerk.GetCost().ToString() + " treats for rocket pack parts";
+    }
+
     private void Show(NPCInteractable target)
     {
-        if (interactText == null) {
+        if (interactText == null) 
+        {
             return;
         }
-        interactText.text = "Press E to interact with " + target.name;
         interactText.gameObject.SetActive(true);
     }
 
