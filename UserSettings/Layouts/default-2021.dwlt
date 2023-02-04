@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 1357
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Hierarchy
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 33
+  controlID: 87
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -309,9 +309,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 34e6ffff
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: b0f8ffff54faffff02fbffff04fbffff20670000ba670000
+      m_ExpandedIDs: 54ccffff66ccffff78ccffff7accffff94e2ffff4cf2ffff2ef7ffff04fbffffb2820000bc820000f482000018a60000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -560,9 +560,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 267.4733, y: 11.231994, z: 266.65695}
+    m_Target: {x: 233.03506, y: 21.87199, z: 259.18042}
     speed: 2
-    m_Value: {x: 267.4733, y: 11.231994, z: 266.65695}
+    m_Value: {x: 233.03506, y: 21.87199, z: 259.18042}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -609,13 +609,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.17378664, y: 0.7596728, z: -0.22331886, w: 0.585988}
+    m_Target: {x: -0.0757773, y: -0.67742413, z: 0.0685271, w: -0.72885674}
     speed: 2
-    m_Value: {x: 0.17285988, y: 0.75979525, z: -0.2221167, w: 0.58608437}
+    m_Value: {x: -0.075652726, y: -0.67832214, z: 0.06862101, w: -0.7276311}
   m_Size:
-    m_Target: 12.2257595
+    m_Target: 0.8660254
     speed: 2
-    m_Value: 11.699291
+    m_Value: 0.8660254
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -681,22 +681,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scriptable Objects
+    - Assets/Blender Models
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scriptable Objects
+  - Assets/Blender Models
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\colto\OneDrive\Documents\Unity Projects\portal-dimensions
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 31}
-    m_SelectedIDs: 888d0000
-    m_LastClickedID: 36232
-    m_ExpandedIDs: 00000000126c0000146c0000166c0000186c00001a6c0000888d0000
+    m_SelectedIDs: 486c0000
+    m_LastClickedID: 27720
+    m_ExpandedIDs: 00000000106c0000126c0000146c0000166c0000186c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -724,7 +724,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000126c0000146c0000166c0000186c00001a6c0000
+    m_ExpandedIDs: 00000000106c0000126c0000146c0000166c0000186c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -752,7 +752,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000766f0000bc20020000000000b24b0300
+    m_ExpandedInstanceIDs: c6230000766f0000bc20020000000000b24b030038a20000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -871,7 +871,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 402
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:

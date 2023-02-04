@@ -148,6 +148,7 @@ public class GameManager : MonoBehaviour
     public void RestartGameAndBackToMenu()
     {
         Debug.Log("TODO: When Main Menu is ready");
+        SceneManager.LoadScene("Main Menu");
         stats.rocketParts = 0;
         gearCollection.amount = 0;
         treatCollection.amount = 0;
