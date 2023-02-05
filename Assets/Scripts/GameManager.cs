@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Stats stats;
 
     public bool gamePaused = false;
+    public bool gameMuted = false;
     public GameObject pauseScreen;
 
     public GameObject instructionsScreen;
@@ -51,6 +52,12 @@ public class GameManager : MonoBehaviour
         else if ((Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) && gamePaused)
         {
             ResumeGame();
+        }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            gameMuted = !gameMuted;
+            AudioListener.volume = gameMuted ? 0 : 1;
         }
     }
 
