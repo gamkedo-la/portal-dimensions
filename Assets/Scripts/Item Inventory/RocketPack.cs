@@ -10,11 +10,13 @@ public class RocketPack : MonoBehaviour
     private void OnEnable()
     {
         StoreClerk.PartAdded += AddPart;
+        Rocket.RocketCollected += RocketEnabled;
     }
 
     private void OnDisable()
     {
         StoreClerk.PartAdded -= AddPart;
+        Rocket.RocketCollected -= RocketEnabled;
     }
 
     // Start is called before the first frame update
@@ -23,10 +25,14 @@ public class RocketPack : MonoBehaviour
         rocketPack.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        rocketPack.gameObject.SetActive(false);
+    }
+
+    public void RocketEnabled()
+    {
+        rocketPack.gameObject.SetActive(true);
     }
 
     public void AddPart()

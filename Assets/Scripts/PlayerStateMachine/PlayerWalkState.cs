@@ -45,6 +45,11 @@ public class PlayerWalkState : PlayerBaseState
         {
             SwitchState(Factory.Grounded());
         }
+        if (Ctx.IsFlying)
+        {
+            //Debug.Log("[PlayerJumpState] CheckSwitchStates(): Starting to Fly");
+            SwitchState(Factory.Fly());
+        }
     }
 
     public override void InitializeSubState()

@@ -43,7 +43,7 @@ public class PlayerJumpState : PlayerBaseState
             }
                 
         }
-        else if (Input.GetButtonDown("Jump"))
+        else if (Ctx.IsFlying)
         {
             //Debug.Log("[PlayerJumpState] CheckSwitchStates(): Starting to Fly");
             SwitchState(Factory.Fly());

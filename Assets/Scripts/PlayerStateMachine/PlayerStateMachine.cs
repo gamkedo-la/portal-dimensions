@@ -24,10 +24,18 @@ public class PlayerStateMachine : MonoBehaviour
     public float groundDistance = .04f;
     public LayerMask groundMask;
 
+    //flying
+    public float acceleration = 1f;
+    public float maxAcceleration = 5f;
+    public float flyingSpeed = 5f;
+    public float maxHeight;
+    public float minHeight;
+
     bool isGrounded;
     bool isRunning = false;
     bool isJumping = false;
     bool isMoving = false;
+    bool isFlying = false;
 
     bool isRunBoost = false;
 
@@ -52,9 +60,14 @@ public class PlayerStateMachine : MonoBehaviour
     public Vector3 Velocity { get { return velocity; } set { velocity = value; } }
     public LayerMask GroundMask { get { return groundMask; } }
     public float WalkingSpeed { get { return walkingSpeed; } }
+    public float FlyingSpeed { get { return flyingSpeed; } }
+    public float Acceleration { get { return acceleration; } }
+    public float MaxAcceleration { get { return maxAcceleration; } }
     public float Gravity { get { return gravity; } set { gravity = value; } }
     public float VelocityY { get { return velocity.y; } set { velocity.y = value; } }
     public float JumpHeight { get { return jumpHeight; } }
+    public float MaxHeight { get { return maxHeight; } }
+    public float MinHeight { get { return minHeight; } }
     public float GroundDistance { get { return groundDistance; } }
     public float TurnSmoothTime { get { return turnSmoothTime; } }
     //public float TurnSmoothVelocity { get { return turnSmoothVelocity; } }
@@ -62,6 +75,7 @@ public class PlayerStateMachine : MonoBehaviour
     public bool IsJumping { get { return isJumping; } set { isJumping = value; } }
     public bool IsMoving { get { return isMoving; } set { isMoving = value; } }
     public bool IsRunning { get { return isRunning; } set { isRunning = value; } }
+    public bool IsFlying { get { return isFlying; } set { isFlying = value; } }
     public bool IsRunBoost { get { return isRunBoost; } set { IsRunBoost = value; } }
 
     //public bool IsAttacking { get { return isAttacking; } set { isAttacking = value; } }
@@ -71,6 +85,16 @@ public class PlayerStateMachine : MonoBehaviour
         states = new PlayerStateFactory(this);
         currentState = states.Grounded();
         currentState.EnterState();
+    }
+
+    private void OnEnable()
+    {
+        Rocket.RocketCollected += SetIsFlying;
+    }
+
+    private void OnDisable()
+    {
+        Rocket.RocketCollected -= SetIsFlying;
     }
 
     // Start is called before the first frame update
@@ -110,6 +134,11 @@ public class PlayerStateMachine : MonoBehaviour
         {
             CheckRunBoostTimer();
         }
+    }
+
+    private void SetIsFlying()
+    {
+        isFlying = true;
     }
 
     public void SetIsRunning(bool running)

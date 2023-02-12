@@ -6,8 +6,8 @@ public class PlayerFlyState : PlayerBaseState
 {
     private const float FLYING_GRAVITY = 0f;
     private float originalGravity;
+    private float yAxis = 0f;
 
-    
     public PlayerFlyState(PlayerStateMachine currentContext, PlayerStateFactory playerStateFactory)
     : base(currentContext, playerStateFactory) 
     {
@@ -19,14 +19,20 @@ public class PlayerFlyState : PlayerBaseState
     {
         Debug.Log("[PlayerFlyState] EnterState(): Start the Fly");
         originalGravity = Ctx.Gravity;
-        Fly();
         //Debug.Log("PlayerFlyState EnterState");
     }
 
     public override void UpdateState()
     {
+        float currentHeight = this.Ctx.gameObject.transform.position.y;
+        Debug.Log(currentHeight);
         CheckSwitchStates();
-        Move(Ctx.WalkingSpeed);
+        if(Input.GetKey(KeyCode.Q) && currentHeight < Ctx.MaxHeight)
+            FlyUp();
+        if (Input.GetKey(KeyCode.E) && currentHeight > Ctx.MinHeight)
+            FlyDown();
+        Move(Ctx.FlyingSpeed);
+        yAxis = 0f;
     }
 
     public override void ExitState()
@@ -36,7 +42,7 @@ public class PlayerFlyState : PlayerBaseState
 
     public override void CheckSwitchStates()
     {
-        if(Ctx.Controller.isGrounded || Input.GetButtonUp("Jump"))
+        if(!Ctx.IsFlying)
         {
             Ctx.Gravity = originalGravity;
             if (Input.GetButton("Vertical") || Input.GetButton("Horizontal"))
@@ -67,18 +73,44 @@ public class PlayerFlyState : PlayerBaseState
         }
     }
 
-    private void Fly()
+    private void FlyUp()
+    {
+        Debug.Log("[PlayerFlyState] EnterState(): Flying");
+        Ctx.VelocityY = 0;
+        Ctx.Gravity = FLYING_GRAVITY;
+
+        if(yAxis < Ctx.MaxAcceleration)
+        {
+            yAxis += Ctx.Acceleration;
+        }
+        else
+        {
+            yAxis = Ctx.MaxAcceleration;
+        }
+    }
+
+    private void FlyDown()
     {
         //Debug.Log("[PlayerFlyState] EnterState(): Flying");
         Ctx.VelocityY = 0;
         Ctx.Gravity = FLYING_GRAVITY;
+
+        if (yAxis > -(Ctx.MaxAcceleration))
+        {
+            yAxis -= Ctx.Acceleration;
+        }
+        else
+        {
+            yAxis = -(Ctx.MaxAcceleration);
+        }
     }
 
     private void Move(float currentSpeed)
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+
+        Vector3 direction = new Vector3(horizontal, yAxis, vertical).normalized;
 
         if (direction.magnitude >= 0.1f)
         {
