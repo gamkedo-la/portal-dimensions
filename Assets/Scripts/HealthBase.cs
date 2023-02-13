@@ -17,7 +17,7 @@ public class HealthBase : MonoBehaviour, IDamageable
     [HideInInspector] public string killedSound;
     [HideInInspector] public string healSound;
     
-    private bool invulnerable = false;
+    protected bool debugInvulnerable = false;
 
     /*
     public HealthBase(int healthMax, GameObject character)
@@ -42,16 +42,6 @@ public class HealthBase : MonoBehaviour, IDamageable
         //healSound = attacker.healSound;
     }
 
-    private void Update()
-    {
-#if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            invulnerable = !invulnerable;
-        }
-#endif
-    }
-
     public float GetHealth()
     {
         return health;  
@@ -59,7 +49,7 @@ public class HealthBase : MonoBehaviour, IDamageable
 
     public virtual void TakeDamage(int damageAmount)
     {
-        if (invulnerable) return;
+        if (debugInvulnerable) return;
         health -= damageAmount;
         //OnHealthChanged?.Invoke(character);
         if (health < 0)
