@@ -11,6 +11,5 @@ public class Rocket : MonoBehaviour
         {
             RocketCollected?.Invoke();
         }
-
     }
 }

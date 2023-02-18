@@ -18,8 +18,22 @@ public class PlayerAttacking : MonoBehaviour
     [SerializeField] public GameObject barkPoint;
     [SerializeField] public GameObject barkBall;
 
+    private IDamageable enemy;
+
+    //shooting rockets
+    private ObjectPool bulletPool;
+    public Bullet bulletPrefab;
+    private Bullet bullet;
+    public Vector3 bulletSpawnOffset = new Vector3(0, 1, 0);
+    [SerializeField] private GameObject bulletSpawnL;
+    [SerializeField] private GameObject bulletSpawnR;
+    [SerializeField] private int damage = 5;
+    private bool spawnLeft = false;
+    
+
     private bool isRunning;
     private bool hitEnemy = false;
+    private bool rocketTime = false;
     private float lastShootTime;
 
     private AudioManager audioManager;
@@ -28,14 +42,16 @@ public class PlayerAttacking : MonoBehaviour
 
     private void OnEnable()
     {
-        attackRadius.AttackEnemy += OnChargeHit;
+        Rocket.RocketCollected += ShootRockets;
+        attackRadius.AttackEnemy += SetEnemy;
         playerState = GetComponent<PlayerStateMachine>();
         isRunning = false;
     }
 
     private void OnDisable()
     {
-        attackRadius.AttackEnemy -= OnChargeHit;
+        Rocket.RocketCollected -= ShootRockets;
+        attackRadius.AttackEnemy -= SetEnemy;
     }
 
     private void Start()
@@ -61,9 +77,31 @@ public class PlayerAttacking : MonoBehaviour
         {
             StopRunning();
         }
-        if(Input.GetKeyDown(KeyCode.Q))
+        if(Input.GetKeyDown(KeyCode.F) && !rocketTime)
         {
             Bark();
+        }
+        else if (Input.GetKeyDown(KeyCode.F) && rocketTime)
+        {
+            Shoot();
+        }
+    }
+
+    public void CreateBulletPool()
+    {
+        if (bulletPool == null)
+        {
+            bulletPool = ObjectPool.CreateInstance(bulletPrefab, Mathf.CeilToInt((1 / shootDelay) * bulletPrefab.autoDestroyTime));
+        }
+    }
+
+    private void SetEnemy(IDamageable enemy)
+    {
+        this.enemy = enemy;
+
+        if(isRunning)
+        {
+            OnChargeHit();
         }
     }
 
@@ -80,14 +118,52 @@ public class PlayerAttacking : MonoBehaviour
         playerState.SetIsRunning(false);
     }
 
-    private void OnChargeHit(IDamageable enemy)
+    private void OnChargeHit()
     {
         Debug.Log("collided");
-        if(enemy.GetTransform().gameObject.tag == "Enemy" && isRunning)
+        if(enemy.GetTransform().gameObject.tag == "Enemy")
         {
             EnemyHealth enemyHealth = enemy.GetTransform().transform.GetComponent<EnemyHealth>();
             HealthBase player = gameObject.GetComponent<HealthBase>();
             enemyHealth.TakeDamage(player.attacker.damage);
+        }
+    }
+
+    private void Shoot()
+    {
+        Debug.Log("Shoot");
+        if (lastShootTime + shootDelay < Time.time)
+        {
+            GameObject spawnPoint;
+            if (spawnLeft)
+            {
+                spawnPoint = bulletSpawnL;
+            }
+            else
+            {
+                spawnPoint = bulletSpawnR;
+            }
+
+            PoolableObject poolableObject = bulletPool.GetObject();
+            if (poolableObject != null)
+            {
+                bullet = poolableObject.GetComponent<Bullet>();
+
+                bullet.transform.position = transform.position + bulletSpawnOffset;
+                bullet.transform.rotation = spawnPoint.transform.rotation;
+
+                if(enemy != null)
+                {
+                    bullet.Spawn(spawnPoint.transform.forward, damage, enemy.GetTransform());
+                }
+                else
+                {
+                    bullet.Spawn(spawnPoint.transform.forward, damage, null);
+                }
+
+            }
+
+            lastShootTime = Time.time;
         }
     }
 
@@ -133,6 +209,12 @@ public class PlayerAttacking : MonoBehaviour
         GameObject ball = Instantiate(barkBall, transform.position, transform.rotation);
         ball.GetComponent<Rigidbody>().AddRelativeForce(new Vector3 (gameObject.transform.forward.x, gameObject.transform.forward.y, gameObject.transform.forward.z + 700f));
         Destroy(ball, 5);
+    }
+
+    private void ShootRockets()
+    {
+        rocketTime = true;
+        CreateBulletPool();
     }
 
     public void HitEnemy()

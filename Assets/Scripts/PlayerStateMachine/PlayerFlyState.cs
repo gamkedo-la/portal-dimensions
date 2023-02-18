@@ -17,7 +17,7 @@ public class PlayerFlyState : PlayerBaseState
 
     public override void EnterState()
     {
-        Debug.Log("[PlayerFlyState] EnterState(): Start the Fly");
+        //Debug.Log("[PlayerFlyState] EnterState(): Start the Fly");
         originalGravity = Ctx.Gravity;
         //Debug.Log("PlayerFlyState EnterState");
     }
@@ -25,7 +25,7 @@ public class PlayerFlyState : PlayerBaseState
     public override void UpdateState()
     {
         float currentHeight = this.Ctx.gameObject.transform.position.y;
-        Debug.Log(currentHeight);
+        //Debug.Log(currentHeight);
         CheckSwitchStates();
         if(Input.GetKey(KeyCode.Q) && currentHeight < Ctx.MaxHeight)
             FlyUp();
@@ -75,7 +75,7 @@ public class PlayerFlyState : PlayerBaseState
 
     private void FlyUp()
     {
-        Debug.Log("[PlayerFlyState] EnterState(): Flying");
+        //Debug.Log("[PlayerFlyState] EnterState(): Flying");
         Ctx.VelocityY = 0;
         Ctx.Gravity = FLYING_GRAVITY;
 

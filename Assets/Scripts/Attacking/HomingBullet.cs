@@ -11,19 +11,19 @@ public class HomingBullet : Bullet
     public Vector2 maxNoise = new Vector2(3f, 1f);
 
 
-    public Coroutine HomeingCoroutine;
+    public Coroutine HomingCoroutine;
 
     public override void Spawn(Vector3 forward, int damage, Transform target)
     {
         this.damage = damage;
         this.target = target;
 
-        if(HomeingCoroutine != null)
+        if(HomingCoroutine != null)
         {
-            StopCoroutine(HomeingCoroutine);
+            StopCoroutine(HomingCoroutine);
         }
 
-        HomeingCoroutine = StartCoroutine(FindTarget());
+        HomingCoroutine = StartCoroutine(FindTarget());
     }
 
     private IEnumerator FindTarget()

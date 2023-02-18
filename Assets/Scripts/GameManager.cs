@@ -130,7 +130,7 @@ public class GameManager : MonoBehaviour
 
     public void ResumeGame()
     {
-        Debug.Log("Resuming game");
+        //Debug.Log("Resuming game");
         Time.timeScale = 1;
         gamePaused = false;
         pauseScreen.SetActive(false);

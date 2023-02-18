@@ -13894,6 +13894,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Common Core Element 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6713860686598587334, guid: 8d9947dbfc61bc2408fd189bbe52f6fd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 235.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 6713860686598587334, guid: 8d9947dbfc61bc2408fd189bbe52f6fd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 22.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 6713860686598587334, guid: 8d9947dbfc61bc2408fd189bbe52f6fd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 259.52
+      objectReference: {fileID: 0}
     - target: {fileID: 8569514237835816793, guid: 8d9947dbfc61bc2408fd189bbe52f6fd, type: 3}
       propertyPath: m_RootOrder
       value: 1
