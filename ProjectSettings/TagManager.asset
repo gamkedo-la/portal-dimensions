@@ -21,7 +21,7 @@ TagManager:
   - EnemyAttackRadius
   - EnemyBullet
   - Obstacle
-  - 
+  - PostProcessing
   - 
   - 
   - 
