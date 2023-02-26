@@ -30,9 +30,10 @@ public class AttackRadius : MonoBehaviour
             Damageables.Add(damageable);
             if(gameObject.tag == "Player" && damageable.GetTransform().gameObject.tag == "Enemy")
             {
+                Debug.Log(damageable.GetTransform().gameObject.name, damageable.GetTransform().gameObject);
                 AttackEnemy?.Invoke(damageable);
             }
-            else if(AttackCoroutine == null)
+            else if(AttackCoroutine == null && (gameObject.tag != damageable.GetTransform().gameObject.tag))
             {
                 //Debug.Log("AttackCorourine == null");
                 AttackCoroutine = StartCoroutine(Attack());

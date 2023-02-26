@@ -131,7 +131,7 @@ public class PlayerAttacking : MonoBehaviour
 
     private void Shoot()
     {
-        Debug.Log("Shoot");
+        
         if (lastShootTime + shootDelay < Time.time)
         {
             GameObject spawnPoint;
@@ -147,10 +147,12 @@ public class PlayerAttacking : MonoBehaviour
             PoolableObject poolableObject = bulletPool.GetObject();
             if (poolableObject != null)
             {
+                Debug.Log("Shoot");
                 bullet = poolableObject.GetComponent<Bullet>();
 
                 bullet.transform.position = transform.position + bulletSpawnOffset;
                 bullet.transform.rotation = spawnPoint.transform.rotation;
+                bullet.gameObject.layer = 7;
 
                 if(enemy != null)
                 {

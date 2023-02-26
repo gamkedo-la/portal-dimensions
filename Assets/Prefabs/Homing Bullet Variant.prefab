@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 406814720128243685, guid: f0289abd2db384748b3f781583e4d028, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5024176291680221669, guid: f0289abd2db384748b3f781583e4d028, type: 3}
       propertyPath: m_Name
       value: Homing Bullet Variant
@@ -75,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoDestroyTime: 5
-  moveSpeed: 3
+  moveSpeed: 5
   damage: 5
   rb: {fileID: 0}
   positionCurve:

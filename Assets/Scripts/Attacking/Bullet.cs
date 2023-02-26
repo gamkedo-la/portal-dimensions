@@ -29,18 +29,21 @@ public class Bullet : PoolableObject
         this.damage = damage;
         this.target = target;
         rb.AddForce(forward * moveSpeed, ForceMode.VelocityChange);
+        //transform.position = forward * moveSpeed * Time.deltaTime;
     }
 
     protected virtual void OnTriggerEnter(Collider other)
     {
         IDamageable damageable;
+        Debug.Log(other.gameObject.name);
 
         if (other.TryGetComponent<IDamageable>(out damageable))
         {
             damageable.TakeDamage(damage);
         }
 
-        Disable();
+        if(!other.isTrigger)
+            Disable();
 
     }
 
