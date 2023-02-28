@@ -780,6 +780,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SampleEnemyArcherHomingArrow
       objectReference: {fileID: 0}
+    - target: {fileID: 7006517545871504402, guid: 96fa835a890f095458a80b78b103abad, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 7006517545871504405, guid: 96fa835a890f095458a80b78b103abad, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -2737,30 +2741,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1833185023696129775, guid: 8d9947dbfc61bc2408fd189bbe52f6fd, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1833185023696129775, guid: 8d9947dbfc61bc2408fd189bbe52f6fd, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1934534177961210675, guid: 8d9947dbfc61bc2408fd189bbe52f6fd, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3669657860371873198, guid: 8d9947dbfc61bc2408fd189bbe52f6fd, type: 3}
-      propertyPath: bulletPrefab
-      value: 
-      objectReference: {fileID: 1751416298253909656, guid: 963b5c031927ae14e982c7dd38420b10, type: 3}
-    - target: {fileID: 5084475994781754402, guid: 8d9947dbfc61bc2408fd189bbe52f6fd, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5619267328468334894, guid: 8d9947dbfc61bc2408fd189bbe52f6fd, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6540624734578589152, guid: 8d9947dbfc61bc2408fd189bbe52f6fd, type: 3}
       propertyPath: m_Name
       value: Common Core Element 1
@@ -2808,10 +2788,6 @@ PrefabInstance:
     - target: {fileID: 8569514237835816793, guid: 8d9947dbfc61bc2408fd189bbe52f6fd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9006040640954347069, guid: 8d9947dbfc61bc2408fd189bbe52f6fd, type: 3}
-      propertyPath: damage
-      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d9947dbfc61bc2408fd189bbe52f6fd, type: 3}

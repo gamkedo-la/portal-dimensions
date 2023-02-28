@@ -4395,9 +4395,11 @@ MonoBehaviour:
   attackSound: DogBark
   spawnPoint: {fileID: 6713860686638287428}
   hitAngle: 90
-  attackRadius: {fileID: 6713860686341169702}
+  runAttackRadius: {fileID: 6713860686341169702}
+  shootAttackRadius: {fileID: 9006040640954347069}
   barkPoint: {fileID: 6713860686638287431}
   barkBall: {fileID: 257802951346268611}
+  bulletPrefab: {fileID: 1751416298253909656, guid: 963b5c031927ae14e982c7dd38420b10, type: 3}
   bulletSpawnOffset: {x: 0, y: 1, z: 0}
   bulletSpawnL: {fileID: 5507982361823946759}
   bulletSpawnR: {fileID: 8825596323824720956}
@@ -7638,9 +7640,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6713860688451378347}
     m_Modifications:
+    - target: {fileID: 1531751199419104460, guid: 408346557d4dfbf42a6a8469056e4e9b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531751199419104460, guid: 408346557d4dfbf42a6a8469056e4e9b, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651078463989530896, guid: 408346557d4dfbf42a6a8469056e4e9b, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740797633185843981, guid: 408346557d4dfbf42a6a8469056e4e9b, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5385945004896785921, guid: 408346557d4dfbf42a6a8469056e4e9b, type: 3}
       propertyPath: m_Name
       value: RocketPack Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5385945004896785921, guid: 408346557d4dfbf42a6a8469056e4e9b, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8047332982797141128, guid: 408346557d4dfbf42a6a8469056e4e9b, type: 3}
       propertyPath: m_RootOrder
@@ -7698,6 +7720,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8127578646447561758, guid: 408346557d4dfbf42a6a8469056e4e9b, type: 3}
+      propertyPath: damage
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 408346557d4dfbf42a6a8469056e4e9b, type: 3}
 --- !u!1 &5084475994781754402 stripped
@@ -7720,6 +7746,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8524125041939377695, guid: 408346557d4dfbf42a6a8469056e4e9b, type: 3}
   m_PrefabInstance: {fileID: 878509278105580067}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9006040640954347069 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8127578646447561758, guid: 408346557d4dfbf42a6a8469056e4e9b, type: 3}
+  m_PrefabInstance: {fileID: 878509278105580067}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 634df479bd404c04399ebe8826486d11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6713860687111301933
 PrefabInstance:
   m_ObjectHideFlags: 0

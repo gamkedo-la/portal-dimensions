@@ -14,7 +14,8 @@ public class PlayerAttacking : MonoBehaviour
     [SerializeField] public string attackSound;
     [SerializeField] public Transform spawnPoint;
     [SerializeField] public float hitAngle = 30f;
-    [SerializeField] public AttackRadius attackRadius;
+    [SerializeField] public AttackRadius runAttackRadius;
+    [SerializeField] public AttackRadius shootAttackRadius;
     [SerializeField] public GameObject barkPoint;
     [SerializeField] public GameObject barkBall;
 
@@ -43,7 +44,8 @@ public class PlayerAttacking : MonoBehaviour
     private void OnEnable()
     {
         Rocket.RocketCollected += ShootRockets;
-        attackRadius.AttackEnemy += SetEnemy;
+        runAttackRadius.AttackEnemy += SetEnemy;
+        shootAttackRadius.AttackEnemy += SetEnemy;
         playerState = GetComponent<PlayerStateMachine>();
         isRunning = false;
     }
@@ -51,7 +53,8 @@ public class PlayerAttacking : MonoBehaviour
     private void OnDisable()
     {
         Rocket.RocketCollected -= ShootRockets;
-        attackRadius.AttackEnemy -= SetEnemy;
+        runAttackRadius.AttackEnemy -= SetEnemy;
+        shootAttackRadius.AttackEnemy -= SetEnemy;
     }
 
     private void Start()
@@ -98,7 +101,7 @@ public class PlayerAttacking : MonoBehaviour
     private void SetEnemy(IDamageable enemy)
     {
         this.enemy = enemy;
-
+        Debug.Log("Enemy set to " + enemy, enemy.GetTransform().gameObject);
         if(isRunning)
         {
             OnChargeHit();
