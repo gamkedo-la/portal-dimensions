@@ -12674,6 +12674,7 @@ GameObject:
   m_Component:
   - component: {fileID: 674457212}
   - component: {fileID: 674457213}
+  - component: {fileID: 674457214}
   m_Layer: 5
   m_Name: HealthBarUI
   m_TagString: Untagged
@@ -12749,12 +12750,25 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 4
   m_WholeNumbers: 0
-  m_Value: 0.508
+  m_Value: 4
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &674457214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674457211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 490e9c95d8c7d2c4faebbe4bcb11d91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 674457213}
 --- !u!224 &684785149 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6713860688016407406, guid: 8d9947dbfc61bc2408fd189bbe52f6fd, type: 3}
@@ -12991,7 +13005,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh40216
+  m_Name: pb_Mesh34594
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13875,7 +13889,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-12986
+  m_Name: pb_Mesh-2268
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14365,6 +14379,14 @@ PrefabInstance:
     - target: {fileID: 6713860686444307895, guid: 8d9947dbfc61bc2408fd189bbe52f6fd, type: 3}
       propertyPath: m_Layer
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6713860686598587333, guid: 8d9947dbfc61bc2408fd189bbe52f6fd, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 674457214}
+    - target: {fileID: 6713860686598587333, guid: 8d9947dbfc61bc2408fd189bbe52f6fd, type: 3}
+      propertyPath: currentHealth
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6713860686598587334, guid: 8d9947dbfc61bc2408fd189bbe52f6fd, type: 3}
       propertyPath: m_LocalPosition.x

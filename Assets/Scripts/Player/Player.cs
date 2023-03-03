@@ -7,11 +7,26 @@ using UnityEngine.PlayerLoop;
 
 public class Player : HealthBase
 {
+    public int maxHealth = 100;
+    public int currentHealth;
+    public HealthBar healthBar;
+
     private bool invuln = false;
     [SerializeField]private GameObject debugTeleportObject;
 
+    private void Start()
+    {
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+    }
+
     private void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            TakeDamage(5);
+        }
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.I))
         {
@@ -35,6 +50,8 @@ public class Player : HealthBase
     {
         if (!invuln)
             base.TakeDamage(damageAmount);
+        currentHealth -= damageAmount;
+        healthBar.SetHealth(currentHealth);
     }
     private void UpdateVignette()
     {
