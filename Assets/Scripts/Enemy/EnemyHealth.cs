@@ -24,15 +24,6 @@ public class EnemyHealth : HealthBase
         }
     }
 
-    void Start()
-    {
-        audioManager = AudioManager.instance;
-        if (audioManager == null)
-        {
-            Debug.LogError("No audio manager found in scene");
-        }
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "PlayerBark")

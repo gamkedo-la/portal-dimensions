@@ -155,7 +155,7 @@ public class PlayerAttacking : MonoBehaviour
 
                 bullet.transform.position = transform.position + bulletSpawnOffset;
                 bullet.transform.rotation = spawnPoint.transform.rotation;
-                bullet.gameObject.layer = 7;
+                bullet.gameObject.layer = 8;
 
                 if(enemy != null)
                 {

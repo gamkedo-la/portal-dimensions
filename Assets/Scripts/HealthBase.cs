@@ -28,7 +28,7 @@ public class HealthBase : MonoBehaviour, IDamageable
     }   
     */
 
-    private void Start()
+    protected virtual void Start()
     {
         audioManager = AudioManager.instance;
         if (audioManager == null)

@@ -30,41 +30,6 @@ public class HomingBullet : Bullet
 
     private IEnumerator FindTarget()
     {
-        Debug.Log(target);
-        /*
-        if(target == null)
-        {
-            GameObject randomTarget = new GameObject();
-            //Vector3 pos = new Vector3(transform.position.x + Random.value, transform.position.y + Random.value, transform.position.z + 150);
-            Vector3 pos = transform. * 5;
-            randomTarget.transform.position = pos;
-            target = randomTarget.transform;
-            Destroy(randomTarget, 5);
-
-            Vector3 startPosition = transform.position;
-            Vector2 noise = new Vector2(Random.Range(minNoise.x, maxNoise.x), Random.Range(minNoise.y, maxNoise.y));
-            Vector3 bulletDirectionVector = new Vector3(target.position.x, target.position.y + yOffset, target.position.z) - startPosition;
-            Vector3 horizontalNoiseVector = Vector3.Cross(bulletDirectionVector, Vector3.up).normalized;
-
-            float noisePosition = 0;
-            float time = 0;
-
-            Debug.Log(target);
-            while (time < 1)
-            {
-                noisePosition = noiseCurve.Evaluate(time);
-
-                transform.position = Vector3.Lerp(startPosition, target.position + new Vector3(0, yOffset, 0),
-                    positionCurve.Evaluate(time)) + new Vector3(horizontalNoiseVector.x * noisePosition * noise.x,
-                    noisePosition * noise.y * noisePosition * horizontalNoiseVector.z * noise.x);
-                transform.LookAt(target.position + new Vector3(0, yOffset, 0));
-
-                time += Time.deltaTime * moveSpeed;
-
-                yield return null;
-            }
-        }
-        */
         Vector3 startPosition = transform.position;
         Vector2 noise = new Vector2(Random.Range(minNoise.x, maxNoise.x), Random.Range(minNoise.y, maxNoise.y));
         Vector3 bulletDirectionVector = new Vector3(target.position.x, target.position.y + yOffset, target.position.z) - startPosition;
@@ -73,7 +38,6 @@ public class HomingBullet : Bullet
         float noisePosition = 0;
         float time = 0;
 
-        Debug.Log(target);
         while (time < 1)
         {
             noisePosition = noiseCurve.Evaluate(time);

@@ -35,11 +35,12 @@ public class Bullet : PoolableObject
     protected virtual void OnTriggerEnter(Collider other)
     {
         IDamageable damageable;
-        Debug.Log(other.gameObject.name);
+        //Debug.Log(other.gameObject.name);
 
         if (other.TryGetComponent<IDamageable>(out damageable))
         {
             damageable.TakeDamage(damage);
+            Disable();
         }
 
         if(!other.isTrigger)

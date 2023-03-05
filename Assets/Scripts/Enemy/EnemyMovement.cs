@@ -57,18 +57,13 @@ public class EnemyMovement : MonoBehaviour
 
     private void HandleGainSight(Player player)
     {
-        //Debug.Log("Handle Gain Sight");
-        //Debug.Log("Current State: " + State);
         EnemyState oldState = State;
-        //Debug.Log("Old State: " + oldState);
         State = EnemyState.Chase;
-        //Debug.Log("New State: " + State);
         OnStateChange?.Invoke(oldState, State);
     }
 
     private void HandleLoseSight(Player player)
     {
-        //Debug.Log("Handle Lose Sight");
         EnemyState oldState = State;
         State = defaultState;
         OnStateChange?.Invoke(oldState, State);
@@ -76,7 +71,6 @@ public class EnemyMovement : MonoBehaviour
 
     public void Spawn()
     {
-        //Debug.Log("Spawn");
         for (int i = 0; i < waypoints.Length; i++)
         {
             NavMeshHit hit;
@@ -91,23 +85,18 @@ public class EnemyMovement : MonoBehaviour
         }
 
         defaultState = (EnemyState)Random.Range(1, 3);
-        //Debug.Log(defaultState);
         OnStateChange?.Invoke(EnemyState.Spawn, defaultState);
     }
 
     private void OnDisable()
     {
         currentState = defaultState;
-        //sightChecker.OnGainSight -= HandleGainSight;
-        //sightChecker.OnLoseSight -= HandleLoseSight;
         enemyFieldOfView.OnGainSight -= HandleGainSight;
         enemyFieldOfView.OnLoseSight -= HandleLoseSight;
-        //OnStateChange -= HandleStateChange;
     }
 
     private void HandleStateChange(EnemyState oldState, EnemyState newState)
     {
-        //Debug.Log("Handle State Change");
         if (oldState != newState)
         {
             if(FollowCoroutine != null)
@@ -117,9 +106,7 @@ public class EnemyMovement : MonoBehaviour
 
             if(oldState == EnemyState.Idle)
             {
-                //Debug.Log("Before: " + agent.speed);
                 agent.speed /= idleMoveSpeedMultiplier;
-                //Debug.Log("After: " + agent.speed);
             }
 
             switch (newState)

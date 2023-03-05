@@ -7,17 +7,15 @@ using UnityEngine.PlayerLoop;
 
 public class Player : HealthBase
 {
-    public int maxHealth = 100;
-    public int currentHealth;
     public HealthBar healthBar;
 
     private bool invuln = false;
     [SerializeField]private GameObject debugTeleportObject;
 
-    private void Start()
+    protected override void Start()
     {
-        currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
+        base.Start();
+        healthBar.SetMaxHealth(health);
     }
 
     private void Update()
@@ -50,8 +48,7 @@ public class Player : HealthBase
     {
         if (!invuln)
             base.TakeDamage(damageAmount);
-        currentHealth -= damageAmount;
-        healthBar.SetHealth(currentHealth);
+        healthBar.SetHealth(health);
     }
     private void UpdateVignette()
     {

@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoDestroyTime: 5
-  moveSpeed: 5
+  moveSpeed: 20
   damage: 5
   rb: {fileID: 0}
   positionCurve:
