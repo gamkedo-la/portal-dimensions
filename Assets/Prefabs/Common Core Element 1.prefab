@@ -4387,8 +4387,6 @@ MonoBehaviour:
   hurtSound: DogHurt
   killedSound: 
   healSound: 
-  maxHealth: 100
-  currentHealth: 100
   healthBar: {fileID: 1455072060}
   debugTeleportObject: {fileID: 0}
 --- !u!114 &3669657860371873185
