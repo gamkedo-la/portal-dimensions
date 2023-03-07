@@ -5621,6 +5621,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6713860686327932795}
+  - {fileID: 8555313312803485082}
   - {fileID: 543450652371973948}
   - {fileID: 7177833177362642603}
   m_Father: {fileID: 6713860686598587334}
@@ -7631,7 +7632,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: d30cb764e66e1244e81cf8819bb1dd3b, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d30cb764e66e1244e81cf8819bb1dd3b, type: 3}
       propertyPath: m_LocalScale.x
@@ -7689,6 +7690,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CyborgDog3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d30cb764e66e1244e81cf8819bb1dd3b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d30cb764e66e1244e81cf8819bb1dd3b, type: 3}
 --- !u!4 &543450652371973948 stripped
@@ -7729,7 +7734,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8047332982797141128, guid: 408346557d4dfbf42a6a8469056e4e9b, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8047332982797141128, guid: 408346557d4dfbf42a6a8469056e4e9b, type: 3}
       propertyPath: m_LocalScale.x
@@ -8270,4 +8275,70 @@ Transform:
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 557825619304408938, guid: 449f36e3d5cb04242b5d0f95f28988d3, type: 3}
   m_PrefabInstance: {fileID: 6727628744804859698}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8156068799291789937
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6713860688451378347}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 683d72aa9e7a5d541b4e1c2963c81c34, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 683d72aa9e7a5d541b4e1c2963c81c34, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 683d72aa9e7a5d541b4e1c2963c81c34, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 683d72aa9e7a5d541b4e1c2963c81c34, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 683d72aa9e7a5d541b4e1c2963c81c34, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 683d72aa9e7a5d541b4e1c2963c81c34, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 683d72aa9e7a5d541b4e1c2963c81c34, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 683d72aa9e7a5d541b4e1c2963c81c34, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 683d72aa9e7a5d541b4e1c2963c81c34, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 683d72aa9e7a5d541b4e1c2963c81c34, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 683d72aa9e7a5d541b4e1c2963c81c34, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 683d72aa9e7a5d541b4e1c2963c81c34, type: 3}
+      propertyPath: m_Name
+      value: CyberDogRigv2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 683d72aa9e7a5d541b4e1c2963c81c34, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 683d72aa9e7a5d541b4e1c2963c81c34, type: 3}
+--- !u!4 &8555313312803485082 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 683d72aa9e7a5d541b4e1c2963c81c34, type: 3}
+  m_PrefabInstance: {fileID: 8156068799291789937}
   m_PrefabAsset: {fileID: 0}
