@@ -5621,6 +5621,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6713860686327932795}
+  - {fileID: 2277957703627143476}
   - {fileID: 2018774713136486902}
   - {fileID: 8555313312803485082}
   - {fileID: 543450652371973948}
@@ -7633,7 +7634,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: d30cb764e66e1244e81cf8819bb1dd3b, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d30cb764e66e1244e81cf8819bb1dd3b, type: 3}
       propertyPath: m_LocalScale.x
@@ -7735,7 +7736,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8047332982797141128, guid: 408346557d4dfbf42a6a8469056e4e9b, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8047332982797141128, guid: 408346557d4dfbf42a6a8469056e4e9b, type: 3}
       propertyPath: m_LocalScale.x
@@ -7947,6 +7948,93 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1249214795765610725, guid: 6a7f4680d1f705d4ea20d503107f052c, type: 3}
   m_PrefabInstance: {fileID: 1249214794385316827}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1735670411769814751
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6713860688451378347}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 9947f1c0002b6fe479f64f39da435a47, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9947f1c0002b6fe479f64f39da435a47, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9947f1c0002b6fe479f64f39da435a47, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9947f1c0002b6fe479f64f39da435a47, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9947f1c0002b6fe479f64f39da435a47, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9947f1c0002b6fe479f64f39da435a47, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9947f1c0002b6fe479f64f39da435a47, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9947f1c0002b6fe479f64f39da435a47, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9947f1c0002b6fe479f64f39da435a47, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9947f1c0002b6fe479f64f39da435a47, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9947f1c0002b6fe479f64f39da435a47, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9947f1c0002b6fe479f64f39da435a47, type: 3}
+      propertyPath: m_Name
+      value: CyberDogV4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9947f1c0002b6fe479f64f39da435a47, type: 3}
+--- !u!1 &1501738110008894350 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9947f1c0002b6fe479f64f39da435a47, type: 3}
+  m_PrefabInstance: {fileID: 1735670411769814751}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6148511757796826815
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501738110008894350}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d81af75cc607fba4598435cfe1dbfc28, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!4 &2277957703627143476 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9947f1c0002b6fe479f64f39da435a47, type: 3}
+  m_PrefabInstance: {fileID: 1735670411769814751}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1985693375184502301
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7956,7 +8044,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: fe99a46335170a54698770f054a132c0, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fe99a46335170a54698770f054a132c0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8001,6 +8089,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: fe99a46335170a54698770f054a132c0, type: 3}
       propertyPath: m_Name
       value: CyberDogV3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fe99a46335170a54698770f054a132c0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe99a46335170a54698770f054a132c0, type: 3}
@@ -8373,7 +8465,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 683d72aa9e7a5d541b4e1c2963c81c34, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 683d72aa9e7a5d541b4e1c2963c81c34, type: 3}
       propertyPath: m_LocalPosition.x
