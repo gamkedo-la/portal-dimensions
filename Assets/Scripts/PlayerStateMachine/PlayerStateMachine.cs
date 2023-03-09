@@ -80,6 +80,10 @@ public class PlayerStateMachine : MonoBehaviour
 
     //public bool IsAttacking { get { return isAttacking; } set { isAttacking = value; } }
 
+    //private Animator anim;
+    private Animator childAnim;
+  
+
     private void Awake()
     {
         states = new PlayerStateFactory(this);
@@ -100,6 +104,8 @@ public class PlayerStateMachine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        childAnim = GetComponentInChildren<Animator>();
+
         walkingSpeed = speed;
         runningSpeed = speed * 2.0f;
         runBoostSpeed = speed * 3.0f;
@@ -125,6 +131,20 @@ public class PlayerStateMachine : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+
+        if (isMoving  == true)
+        {
+            childAnim.SetBool("isRunning", true);
+        }
+        else
+        {
+            childAnim.SetBool("isRunning", false);
+        }
+            //childAnim.SetBool("isRunning", true);
+            //childAnim.SetBool("isRunning", false);
+      
+
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
@@ -145,12 +165,18 @@ public class PlayerStateMachine : MonoBehaviour
     {
         //Debug.Log("[PlayerStateMachine]: Running");
         isRunning = running;
+
+       
         if(isRunning)
         {
+          
+
             walkingSpeed = runningSpeed;
+           
         }
         else
         {
+            
             walkingSpeed = speed;
         }
     }    
