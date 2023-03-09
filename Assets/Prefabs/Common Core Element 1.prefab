@@ -7691,6 +7691,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d30cb764e66e1244e81cf8819bb1dd3b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d30cb764e66e1244e81cf8819bb1dd3b, type: 3}
       propertyPath: m_Name
       value: CyborgDog3
