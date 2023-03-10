@@ -29,6 +29,9 @@ public class GameManager : MonoBehaviour
     public GameObject instructionPgTwo;
     public GameObject instructionPgThree;
 
+    private AudioManager audioManager;
+    [SerializeField] string[] themeNames;
+
     private void OnEnable()
     {
         HealthBase.OnHealthChanged += UpdateHealth;
@@ -41,6 +44,12 @@ public class GameManager : MonoBehaviour
         HealthBase.OnHealthChanged -= UpdateHealth;
         Item.Changed -= UpdateInfo;
         StoreClerk.Changed -= UpdateInfo;
+    }
+
+    public void PlayLevelTheme()
+    {
+        audioManager.StopAllSound();
+        audioManager.Play(themeNames[SceneManager.GetActiveScene().buildIndex]);
     }
 
     private void checkPause()
@@ -68,6 +77,14 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("No player set");
         }
+
+        audioManager = AudioManager.instance;
+        if (audioManager == null)
+        {
+            Debug.LogError("No audio manager found in scene");
+        }
+
+        PlayLevelTheme();
         //playerHealth = player;
         DisplayHUB();
         ResumeGame();

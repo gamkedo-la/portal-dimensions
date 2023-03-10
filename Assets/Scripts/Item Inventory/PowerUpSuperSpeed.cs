@@ -1,14 +1,15 @@
 using System;
 using UnityEngine;
 
-public class PowerUpSuperSpeed : Item
+public class PowerUpSuperSpeed : MonoBehaviour 
 {
+    [SerializeField] GameObject bolt;
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
             other.gameObject.GetComponent<PlayerStateMachine>().SetIsRunBoost(true);
-            Destroy(transform.gameObject);
+            bolt.gameObject.SetActive(false);
         }
             
     }

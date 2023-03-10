@@ -153,7 +153,7 @@ public class PlayerAttacking : MonoBehaviour
                 Debug.Log("Shoot");
                 bullet = poolableObject.GetComponent<Bullet>();
 
-                bullet.transform.position = transform.position + bulletSpawnOffset;
+                bullet.transform.position = spawnPoint.transform.position + bulletSpawnOffset;
                 bullet.transform.rotation = spawnPoint.transform.rotation;
                 bullet.gameObject.layer = 8;
 
@@ -165,7 +165,7 @@ public class PlayerAttacking : MonoBehaviour
                 {
                     bullet.Spawn(spawnPoint.transform.forward, damage, null);
                 }
-
+                spawnLeft = !spawnLeft;
             }
 
             lastShootTime = Time.time;

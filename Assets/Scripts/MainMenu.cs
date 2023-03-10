@@ -10,15 +10,30 @@ public class MainMenu : MonoBehaviour
     [SerializeField] ItemCollection treatCollection;
     [SerializeField] Stats stats;
 
+    private AudioManager audioManager;
+
     // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 1;
+
+        audioManager = AudioManager.instance;
+        if (audioManager == null)
+        {
+            Debug.LogError("No audio manager found in scene");
+        }
+
+        PlayLevelTheme();
     }
 
     public void PlayGame()
     {
         SceneManager.LoadScene("Home World Scene");
+    }
+
+    public void PlayLevelTheme()
+    {
+        audioManager.Play("MainTheme");
     }
 
     public void RestartGame()

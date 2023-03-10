@@ -5403,7 +5403,7 @@ MonoBehaviour:
   treatCollection: {fileID: 11400000, guid: 420b27dfbf2daec458d4f020e387a857, type: 2}
   totalGearsNeeded: 10
   totalRocketPartsNeeded: 5
-  stats: {fileID: 0}
+  stats: {fileID: 11400000, guid: 5a006b160e99812408b8c6b9e8c382a8, type: 2}
   gamePaused: 0
   gameMuted: 0
   pauseScreen: {fileID: 9118507303171286819}
@@ -5411,6 +5411,11 @@ MonoBehaviour:
   instructionPgOne: {fileID: 8341378458782933512}
   instructionPgTwo: {fileID: 275219608}
   instructionPgThree: {fileID: 1737104096712283984}
+  themeNames:
+  - MainTheme
+  - HomeWorldTheme
+  - CastleTheme
+  - AirTheme
 --- !u!1 &6713860688016407394
 GameObject:
   m_ObjectHideFlags: 0

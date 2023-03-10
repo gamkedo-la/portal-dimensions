@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2112306400231756451}
   - component: {fileID: 3447423035045151129}
   - component: {fileID: 3190860891378562099}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CannonBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoDestroyTime: 5
-  moveSpeed: 2
+  moveSpeed: 0.5
   damage: 5
   rb: {fileID: 3447423035045151129}
   positionCurve:

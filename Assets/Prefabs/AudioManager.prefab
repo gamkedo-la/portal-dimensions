@@ -81,3 +81,27 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  - name: CastleTheme
+    clip: {fileID: 8300000, guid: 4063771cb021d9a48ba9012d59cecccf, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: AirTheme
+    clip: {fileID: 8300000, guid: 247309f50f254154ea13f5e1ebb7a855, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: MainTheme
+    clip: {fileID: 8300000, guid: 5996ec682570c0a4d86d000d6366f817, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: HomeWorldTheme
+    clip: {fileID: 8300000, guid: abe594579fe9fb6478033a026edbfe89, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}

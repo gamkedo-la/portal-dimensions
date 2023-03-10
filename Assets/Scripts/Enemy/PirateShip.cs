@@ -90,7 +90,7 @@ public class PirateShip : MonoBehaviour
             Debug.Log("Shoot cannon at " + player.transform);
             bullet = poolableObject.GetComponent<Bullet>();
 
-            bullet.transform.position = transform.position + bulletSpawnOffset;
+            bullet.transform.position = spawnPoint.transform.position + bulletSpawnOffset;
             bullet.transform.rotation = spawnPoint.transform.rotation;
 
             if (player != null)
@@ -102,6 +102,7 @@ public class PirateShip : MonoBehaviour
                 bullet.Spawn(spawnPoint.transform.forward, damage, null);
             }
 
+            spawnLeft = !spawnLeft;
         }
     }
 }

@@ -15,8 +15,8 @@ MonoBehaviour:
   isRanged: 0
   damage: 5
   attackRadius: 3
-  attackDelay: 1
-  attackSound: 
+  attackDelay: 1.5
+  attackSound: SwordAttack
   hurtSound: EnemyDamage
   killedSound: EnemyDamage
   healSound: 
