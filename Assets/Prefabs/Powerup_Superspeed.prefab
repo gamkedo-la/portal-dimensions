@@ -64,11 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf96aa3cc796e4448b970e3b442aa69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 8538315572812721040}
-  itemName: PowerUpSuperSpeed
-  worth: 0
-  soundName: 
-  collection: {fileID: 11400000, guid: c28c62ca3fa1bb44cad2673fa59f5f17, type: 2}
+  bolt: {fileID: 8538315573960942543}
 --- !u!1 &8538315573296449372
 GameObject:
   m_ObjectHideFlags: 0
@@ -2519,7 +2515,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2645
+  m_VersionIndex: 2648
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3090,7 +3086,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1140
+  m_VersionIndex: 1143
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -4595,7 +4591,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2104
+  m_VersionIndex: 2107
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []

@@ -19,7 +19,6 @@ public class Item : PoolableObject
 
     private void Start()
     {
-        Debug.Log(gameObject.name);
         audioManager = AudioManager.instance;
         if(audioManager == null)
         {

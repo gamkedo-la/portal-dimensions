@@ -24,10 +24,6 @@ public class AttackRadius : MonoBehaviour
         IDamageable damageable = other.GetComponent<IDamageable>();
         if(damageable != null)
         {
-            //Debug.Log("AttackRadius OnTriggerEnter()");
-            Debug.Log("other name: " + other.gameObject.name, other);
-            Debug.Log("gameobject name: " + gameObject.tag + "damagable tag: " + damageable.GetTransform().gameObject.tag);
-            //Debug.Log("damageable tag: " + damageable.GetTransform().gameObject.tag);
             Damageables.Add(damageable);
             if(gameObject.tag == "Player" && damageable.GetTransform().gameObject.tag == "Enemy")
             {
