@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
-public class PirateShip : MonoBehaviour
+public class PirateShip : HealthBase
 {
     public EnemyFieldOfView enemyFieldOfView;
 
@@ -18,6 +19,7 @@ public class PirateShip : MonoBehaviour
     [SerializeField] private int damage = 5;
     private bool spawnLeft = false;
     private Coroutine AttackCoroutine;
+
     private void OnEnable()
     {
         CreateBulletPool();
@@ -25,7 +27,7 @@ public class PirateShip : MonoBehaviour
         enemyFieldOfView.OnLoseSight += HandleLoseSight;
     }
 
-    private void HandleGainSight(Player player)
+        private void HandleGainSight(Player player)
     {
         Debug.Log("Gain sight");
         if(AttackCoroutine == null)

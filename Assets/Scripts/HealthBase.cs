@@ -60,6 +60,7 @@ public class HealthBase : MonoBehaviour, IDamageable
         {
             Killed(character);
         }
+        Debug.Log(gameObject.name + " has " + health + " health points now");
     }
 
     public void Heal(float healAmount)
