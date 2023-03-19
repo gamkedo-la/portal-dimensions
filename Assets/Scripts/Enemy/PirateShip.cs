@@ -19,6 +19,7 @@ public class PirateShip : HealthBase
     [SerializeField] private int damage = 5;
     private bool spawnLeft = false;
     private Coroutine AttackCoroutine;
+    Rigidbody rb;
 
     private void OnEnable()
     {
@@ -27,7 +28,13 @@ public class PirateShip : HealthBase
         enemyFieldOfView.OnLoseSight += HandleLoseSight;
     }
 
-        private void HandleGainSight(Player player)
+    protected override void Start()
+    {
+        base.Start();
+        rb = gameObject.GetComponent<Rigidbody>();
+    }
+
+    private void HandleGainSight(Player player)
     {
         Debug.Log("Gain sight");
         if(AttackCoroutine == null)
@@ -106,5 +113,12 @@ public class PirateShip : HealthBase
 
             spawnLeft = !spawnLeft;
         }
+    }
+
+    protected override void Killed(GameObject character)
+    {
+        base.Killed(character);
+        
+        rb.useGravity = true;
     }
 }
