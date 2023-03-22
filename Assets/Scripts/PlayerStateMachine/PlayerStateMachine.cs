@@ -81,7 +81,7 @@ public class PlayerStateMachine : MonoBehaviour
     //public bool IsAttacking { get { return isAttacking; } set { isAttacking = value; } }
 
     //private Animator anim;
-    private Animator childAnim;
+    public Animator childAnim;
   
 
     private void Awake()
@@ -104,7 +104,7 @@ public class PlayerStateMachine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        childAnim = GetComponentInChildren<Animator>();
+        
 
         walkingSpeed = speed;
         runningSpeed = speed * 2.0f;
@@ -132,15 +132,15 @@ public class PlayerStateMachine : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        /*
+        isMoving = velocity.magnitude > 0.1f;
         if (isMoving  == true)
         {
-            childAnim.SetBool("isRunning", true);
+            childAnim.SetBool("isDashing", true);
         }
         else
         {
-            childAnim.SetBool("isRunning", false);
-        }*/
+            childAnim.SetBool("isDashing", false);
+        }
             //childAnim.SetBool("isRunning", true);
             //childAnim.SetBool("isRunning", false);
       
