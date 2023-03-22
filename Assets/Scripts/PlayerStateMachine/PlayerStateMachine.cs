@@ -132,7 +132,8 @@ public class PlayerStateMachine : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        isMoving = velocity.magnitude > 0.1f;
+        isMoving = controller.velocity.magnitude > 0.1f;
+        
         if (isMoving  == true)
         {
             childAnim.SetBool("isDashing", true);
