@@ -133,14 +133,14 @@ public class PlayerStateMachine : MonoBehaviour
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         isMoving = controller.velocity.magnitude > 0.1f;
-        
+       
         if (isMoving  == true)
         {
-            childAnim.SetBool("isDashing", true);
+            childAnim.SetBool("isWalking", true);
         }
         else
         {
-            childAnim.SetBool("isDashing", false);
+            childAnim.SetBool("isWalking", false);
         }
             //childAnim.SetBool("isRunning", true);
             //childAnim.SetBool("isRunning", false);
@@ -170,14 +170,14 @@ public class PlayerStateMachine : MonoBehaviour
        
         if(isRunning)
         {
-            childAnim.SetBool("isRunning", true);
+            childAnim.SetBool("isDashing", true);
 
             walkingSpeed = runningSpeed;
            
         }
         else
         {
-            childAnim.SetBool("isRunning", false);
+            childAnim.SetBool("isDashing", false);
             walkingSpeed = speed;
         }
     }    
@@ -189,10 +189,12 @@ public class PlayerStateMachine : MonoBehaviour
         if(isRunBoost)
         {
             walkingSpeed = runBoostSpeed;
+            childAnim.SetBool("isDashing", true);
         }
         else
         {
             walkingSpeed = speed;
+            childAnim.SetBool("isDashing", true);
         }
     }
 
